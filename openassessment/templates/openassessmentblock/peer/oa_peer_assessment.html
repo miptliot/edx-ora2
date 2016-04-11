@@ -76,7 +76,7 @@
                                 </header>
 
                                 <div class="peer-assessment__display__image">
-                                    <img class="submission--image" alt="{% trans "The image associated with your peer's submission." %}" src="{{ peer_file_url }}"/>
+                                    <img class="submission--image" onerror="this.style.display = 'none'" alt="{% trans "The image associated with your peer's submission." %}" src="{{ peer_file_url }}"/>
                                 </div>
                                 {% endif %}
                             </div>
