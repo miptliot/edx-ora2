@@ -40,6 +40,11 @@ class Backend(BaseBackend):
 
     def get_download_url(self, key):
         make_download_url_available(self._get_key_name(key), self.DOWNLOAD_URL_TIMEOUT)
+        from ..views_filesystem import get_file_path
+        import os
+        file_path = get_file_path(self._get_key_name(key))
+        if not os.path.exists(file_path):
+            return ""
         return self._get_url(key)
 
     def _get_url(self, key):

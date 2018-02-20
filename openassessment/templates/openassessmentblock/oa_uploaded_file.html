@@ -10,7 +10,9 @@
         </header>
     {% endif %}
 
+    {% if file_url %}
     <div class="{{ class_prefix }}__display__file {% if not file_url %}is--hidden{% endif %}" id="submission__{{ file_upload_type }}__upload" data-upload-type="{{ file_upload_type }}">
+
         {% if file_upload_type == "image" %}
             <img id="submission__answer__file"
                  class="submission--image"
@@ -25,6 +27,9 @@
             {% endif %}
         {% endif %}
     </div>
+    {% else %}
+        <p > {% trans "Student haven't provided file" %}</p>
+    {% endif %}
 {% endif %}
 
 {% endspaceless %}
