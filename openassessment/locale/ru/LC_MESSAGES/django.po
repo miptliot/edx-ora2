@@ -2101,3 +2101,6 @@ msgstr "Количество лучших ответов задано невер
 #: openassessment/xblock/validation.py:404
 msgid "The submission format is invalid."
 msgstr "Неправильный формат ответа."
+
+msgid "Student haven't provided file"
+msgstr "Студент не загрузил файл"
