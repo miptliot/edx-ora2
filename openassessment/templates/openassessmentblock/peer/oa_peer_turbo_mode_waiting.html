@@ -38,6 +38,10 @@
               <p><strong>{% trans "All submitted peer responses have been assessed. Check back later to see if more learners have submitted responses." %}</strong></p>
             </div>
         </div>
+
+        {% if display_peer_assessments %}
+            {% include "openassessmentblock/peer/oa_peer_user_assessments.html" %}
+        {% endif %}
     </div>
 </div>
 {% endblock %}

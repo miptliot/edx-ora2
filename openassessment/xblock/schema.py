@@ -109,6 +109,7 @@ EDITOR_UPDATE_SCHEMA = Schema({
             Required('due', default=None): Any(datetime_validator, None),
             'required': bool,
             'must_grade': All(int, Range(min=0)),
+            'display_peer_assessments': bool,
             'must_be_graded_by': All(int, Range(min=0)),
             'examples': [
                 Schema({

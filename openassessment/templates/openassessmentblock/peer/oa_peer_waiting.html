@@ -37,6 +37,10 @@
               <p>{% trans "All available peer responses have been assessed. Check back later to see if more learners have submitted responses. You will receive your grade after you've completed all the steps for this problem and your peers have assessed your response." %}</p>
             </div>
         </div>
+
+        {% if display_peer_assessments %}
+            {% include "openassessmentblock/peer/oa_peer_user_assessments.html" %}
+        {% endif %}
     </div>
 </div>
 {% endblock %}

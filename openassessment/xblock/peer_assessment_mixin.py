@@ -266,6 +266,17 @@ class PeerAssessmentMixin(object):
                 # Sets the XBlock boolean to signal to Message that it WAS able to grab a submission
                 self.no_peers = True
 
+        display_peer_assessments = assessment.get('display_peer_assessments', False) if assessment else False
+        context_dict['display_peer_assessments'] = display_peer_assessments
+        context_dict['submission_uuid'] = self.submission_uuid
+        context_dict['peer_assessments'] = []
+
+        if display_peer_assessments:
+            context_dict['peer_assessments'] = peer_api.get_assessments(self.submission_uuid)
+            max_scores = peer_api.get_rubric_max_scores(self.submission_uuid)
+            for criterion in context_dict["rubric_criteria"]:
+                criterion["total_value"] = max_scores[criterion["name"]] if max_scores is not None else 0
+
         return path, context_dict
 
     def get_peer_submission(self, student_item_dict, assessment):

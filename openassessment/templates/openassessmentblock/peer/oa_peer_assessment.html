@@ -102,6 +102,10 @@
             </div>
         </div>
     </div>
+
+    {% if display_peer_assessments %}
+        {% include "openassessmentblock/peer/oa_peer_user_assessments.html" %}
+    {% endif %}
     {% endblock %}
 {% endspaceless %}
 </li>
