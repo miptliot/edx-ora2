@@ -1,0 +1,16 @@
+{% load i18n %}
+
+<div class="openassessment__staff-tools wrapper--staff-tools wrapper--ui-peer-user-info">
+    <div class="staff-info ui-staff">
+        <div class="staff-info__content ui-staff__content">
+            <div class="staff-info__student">
+                <div class="openassessment__student-info staff-info__student__report"
+                     data-submission-uuid="{{ submission_uuid }}">
+                    {% trans "Display Assessments from other students" as translated_title %}
+                    {% include "openassessmentblock/staff_area/oa_student_info_assessment_detail.html" with class_type="peer" assessments=peer_assessments %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
