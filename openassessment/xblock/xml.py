@@ -572,6 +572,10 @@ def parse_assessments_xml(assessments_root):
             except ValueError:
                 raise UpdateFromXmlError('The "must_be_graded_by" value must be a positive integer.')
 
+        if 'display_peer_assessments' in assessment.attrib:
+            assessment_dict['display_peer_assessments'] = _parse_boolean(
+                unicode(assessment.get('display_peer_assessments')))
+
         # Assessment required
         if 'required' in assessment.attrib:
 
@@ -666,6 +670,9 @@ def serialize_assessments(assessments_root, oa_block):
 
         if assessment_dict.get('required') is not None:
             assessment.set('required', unicode(assessment_dict['required']))
+
+        if assessment_dict.get('display_peer_assessments') is not None:
+            assessment.set('display_peer_assessments', unicode(assessment_dict['display_peer_assessments']))
 
         # Training examples
         examples = assessment_dict.get('examples', [])

@@ -73,6 +73,15 @@
                     </div>
                     <p class="setting-help">{% trans "Enter the date and time when all peer assessments must be complete." %}</p>
                 </li>
+                <li class="field comp-setting-entry">
+                    <div class="wrapper-comp-setting">
+                        <label for="peer_assessment_display_peer_assessments" class="setting-label">{% trans "Allow students to see peer assessments results"%}</label>
+                            <select id="peer_assessment_display_peer_assessments" class="input setting-input" name="upload submission">
+                                <option value="0">{% trans "False"%}</option>
+                                <option value="1" {% if assessments.peer_assessment.display_peer_assessments %}selected="true"{% endif %}>{% trans "True"%}</option>
+                            </select>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

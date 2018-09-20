@@ -9,6 +9,7 @@
         </button>
     </div>
     <div class="ui-slidable__content" role="group" id="{{ class_type }}_content_{{ submission.uuid }}" aria-labelledby="{{ class_type }}_{{ submission.uuid }}">
+        {% if assessments|length > 0 %}
         {% for assessment in assessments %}
             {% with assessment_num=forloop.counter %}
                 {% if assessments|length > 1 %}
@@ -63,5 +64,8 @@
                 {% endif %}
             {% endwith %}
         {% endfor %}
+        {% else %}
+            {% trans "There is no data to display" %}
+        {% endif %}
     </div>
 </div>

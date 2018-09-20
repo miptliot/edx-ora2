@@ -66,7 +66,8 @@ OpenAssessment.EditPeerAssessmentView.prototype = {
             must_grade: this.mustGradeNum(),
             must_be_graded_by: this.mustBeGradedByNum(),
             start: this.startDatetime(),
-            due: this.dueDatetime()
+            due: this.dueDatetime(),
+            display_peer_assessments: this.displayPeerAssessments()
         };
     },
 
@@ -104,6 +105,12 @@ OpenAssessment.EditPeerAssessmentView.prototype = {
     mustGradeNum: function(num) {
         if (num !== undefined) { this.mustGradeField.set(num); }
         return this.mustGradeField.get();
+    },
+
+    displayPeerAssessments: function() {
+        var sel = $("#peer_assessment_display_peer_assessments", this.element);
+        var input = new OpenAssessment.InputControl(sel);
+        return input.get() === '1';
     },
 
     /**
