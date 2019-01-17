@@ -152,6 +152,12 @@ class OpenAssessmentBlock(MessageMixin,
         help="Custom list of file types allowed with submission."
     )
 
+    allow_learner_remove_attempt = Boolean(
+        default=False,
+        scope=Scope.settings,
+        help="Allow learners to remove answer."
+    )
+
     allow_latex = Boolean(
         default=False,
         scope=Scope.settings,

@@ -208,6 +208,7 @@ OpenAssessment.StudioView.prototype = {
             fileUploadType: fileUploadType !== '' ? fileUploadType : null,
             fileTypeWhiteList: view.settingsView.fileTypeWhiteList(),
             latexEnabled: view.settingsView.latexEnabled(),
+            allowLearnerRemoveAttempt: view.settingsView.allowLearnerRemoveAttempt(),
             leaderboardNum: view.settingsView.leaderboardNum(),
             editorAssessmentsOrder: view.settingsView.editorAssessmentsOrder()
         }).done(
