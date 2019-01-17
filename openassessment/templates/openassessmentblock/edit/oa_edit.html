@@ -154,6 +154,16 @@
                         </div>
                     </div>
                 </li>
+                <li id="openassessment_allow_learner_remove_attempt_wrapper" class="field comp-setting-entry">
+                    <div class="wrapper-comp-setting">
+                        <label for="openassessment_allow_learner_remove_attempt_editor" class="setting-label">{% trans "Allow Learners To Remove Answer"%}</label>
+                        <select id="openassessment_allow_learner_remove_attempt_editor" class="input setting-input" name="allow_learner_remove_attempt">
+                            <option value="0">{% trans "False"%}</option>
+                            <option value="1" {% if allow_learner_remove_attempt %} selected="true" {% endif %}>{% trans "True"%}</option>
+                        </select>
+                    </div>
+                    <p class="setting-help">{% trans "Specify whether learners can remove answers"%}</p>
+                </li>
                 <li id="openassessment_submission_latex_wrapper" class="field comp-setting-entry">
                     <div class="wrapper-comp-setting">
                         <label for="openassessment_submission_latex_editor" class="setting-label">{% trans "Allow LaTeX Responses"%}</label>

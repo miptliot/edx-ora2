@@ -7,6 +7,7 @@ from submissions import api
 from openassessment.fileupload import api as file_upload_api
 from openassessment.fileupload.exceptions import FileUploadError
 from openassessment.workflow.errors import AssessmentWorkflowError
+from webob import Response
 
 from .resolve_dates import DISTANT_FUTURE
 from .user_data import get_user_preferences
@@ -477,6 +478,44 @@ class SubmissionMixin(object):
         path, context = self.submission_path_and_context()
         return self.render_assessment(path, context_dict=context)
 
+    def _remove_learners_attempt(self):
+        if self.in_studio_preview:
+            return False, self._("Can't remove attempt in studio preview.")
+
+        try:
+            from lms.djangoapps.instructor import enrollment
+            from courseware.models import StudentModule
+            from student.models import User
+            from submissions import api as sub_api
+        except ImportError:
+            return False, "Import error"
+
+        user_service = self.runtime.service(self, 'user')
+        if user_service and hasattr(user_service, '_django_user'):
+            student = user_service._django_user
+        else:
+            return False, self._("Invalid user.")
+
+        try:
+            enrollment.reset_student_attempts(
+                self.location.course_key,
+                student,
+                self.location,
+                requesting_user=student,
+                delete_module=True
+            )
+            return True, None
+        except StudentModule.DoesNotExist:
+            return False, self._("Module does not exist.")
+        except sub_api.SubmissionError:
+            # Trust the submissions API to log the error
+            return False, self._("An error occurred while deleting the score.")
+
+    @XBlock.handler
+    def remove_learners_attempt(self, data, suffix=''):
+        result, msg = self._remove_learners_attempt()
+        return Response(json={'success': result, 'msg': msg})
+
     def submission_path_and_context(self):
         """
         Determine the template path and context to use when
@@ -590,6 +629,7 @@ class SubmissionMixin(object):
             context["self_incomplete"] = self_in_workflow and not workflow["status_details"]["self"]["complete"]
             context["student_submission"] = create_submission_dict(student_submission, self.prompts)
             context["submission_id"] = workflow["submission_uuid"]
+            context["allow_learner_remove_attempt"] = self.allow_learner_remove_attempt and not self.in_studio_preview
             path = 'openassessmentblock/response/oa_response_submitted.html'
 
         return path, context

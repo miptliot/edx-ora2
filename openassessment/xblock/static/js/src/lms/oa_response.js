@@ -106,6 +106,27 @@ OpenAssessment.ResponseView.prototype = {
             }
         );
 
+        sel.find('.remove-learners-attempt').click(
+            function(eventObject) {
+                eventObject.preventDefault();
+                if (window.confirm(gettext("Are you sure you want to remove your answer?"))) {
+                    var self = $(this);
+                    var btnText = self.html();
+                    self.prop('disabled', true).html(gettext("Please wait..."));
+                    view.server.removeLearnersAttempt().done(
+                        function() {
+                            view.baseView.load();
+                        }
+                    ).fail(
+                        function(msg) {
+                            self.removeProp('disabled').html(btnText);
+                            alert(msg);
+                        }
+                    );
+                }
+            }
+        );
+
         // Install a click handler for the save button
         sel.find('.submission__save').click(
             function(eventObject) {

@@ -56,6 +56,15 @@
                 {% trans "Your Uploaded Files"  as translated_header %}
                 {% include "openassessmentblock/oa_uploaded_file.html" with file_upload_type=file_upload_type file_urls=file_urls header=translated_header class_prefix="submission__answer" including_template="response_submitted" xblock_id=xblock_id %}
             </article>
+            {% if allow_learner_remove_attempt %}
+            <div>
+                <ul class="list list--actions">
+                    <li class="list--actions__item">
+                        <button class="action action--submit remove-learners-attempt">{% trans "Remove Your Answer" %}</button>
+                    </li>
+                </ul>
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>

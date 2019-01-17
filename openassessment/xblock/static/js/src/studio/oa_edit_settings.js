@@ -254,6 +254,26 @@ OpenAssessment.EditSettingsView.prototype = {
     Returns:
         boolean
     **/
+    allowLearnerRemoveAttempt: function(isEnabled) {
+        var sel = $('#openassessment_allow_learner_remove_attempt_editor', this.settingsElement);
+        if (isEnabled !== undefined) {
+            if (isEnabled) {
+                sel.val(1);
+            } else {
+                sel.val(0);
+            }
+        }
+        return sel.val() === "1";
+    },
+
+    /**
+    Enable / disable latex rendering.
+
+    Args:
+        isEnabled(boolean, optional): if provided enable/disable latex rendering
+    Returns:
+        boolean
+    **/
     latexEnabled: function(isEnabled) {
         var sel = $('#openassessment_submission_latex_editor', this.settingsElement);
         if (isEnabled !== undefined) {

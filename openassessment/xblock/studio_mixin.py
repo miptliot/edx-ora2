@@ -147,6 +147,7 @@ class StudioMixin(object):
             'necessity_options': self.NECESSITY_OPTIONS,
             'file_upload_type': self.file_upload_type,
             'white_listed_file_types': self.white_listed_file_types_string,
+            'allow_learner_remove_attempt': self.allow_learner_remove_attempt,
             'allow_latex': self.allow_latex,
             'leaderboard_show': self.leaderboard_show,
             'editor_assessments_order': [
@@ -270,6 +271,7 @@ class StudioMixin(object):
         else:
             self.file_upload_type = None
             self.white_listed_file_types_string = None
+        self.allow_learner_remove_attempt = bool(data['allow_learner_remove_attempt'])
         self.allow_latex = bool(data['allow_latex'])
         self.leaderboard_show = data['leaderboard_show']
 
