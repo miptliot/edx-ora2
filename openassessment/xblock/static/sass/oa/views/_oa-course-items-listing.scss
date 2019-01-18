@@ -17,6 +17,8 @@
   .open-response-assessment-summary {
     td {
       border: none;
+      white-space: normal;
+      vertical-align: top;
     }
   }
 
@@ -31,6 +33,8 @@
     th {
       background-color: #ffffff;
       text-align: left;
+      white-space: normal;
+      vertical-align: top;
 
       button {
         background: none;
@@ -38,6 +42,7 @@
         box-shadow: none;
         outline: none;
         font-size: 14px;
+        text-align: left;
       }
 
       a {
@@ -65,7 +70,7 @@
     color: #0079bc;
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 0.8em;
+    font-size: 0.7em;
   }
 
   .ora-summary-value {
@@ -76,14 +81,17 @@
 
   .backgrid {
     @extend %truncated-digits;
-    .peer, .self, .staff, .waiting, .training {
-      width: 80px;
+    .peer {
+      width: 120px;
+    }
+    .self, .staff, .waiting, .training {
+      width: 100px;
     }
     .total {
       width: 130px;
     }
     .done {
-      width: 160px;
+      width: 130px;
     }
   }
 }
