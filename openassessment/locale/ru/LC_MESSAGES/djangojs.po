@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: edx-platform\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-17 15:27-0500\n"
+"POT-Creation-Date: 2019-01-18 07:29-0500\n"
 "PO-Revision-Date: 2017-09-23 19:57+0000\n"
 "Last-Translator: Liubov Fomicheva <liubov.nelapa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/open-edx/edx-platform/"
@@ -59,6 +59,20 @@ msgstr "Не удалось отправить ответ."
 #: openassessment/xblock/static/js/src/oa_server.js:215
 msgid "This response could not be saved."
 msgstr "Не удалось сохранить ответ."
+
+#: openassessment/xblock/static/js/openassessment-lms.min.js:1
+#: openassessment/xblock/static/js/openassessment-studio.min.js:1
+#: openassessment/xblock/static/js/src/oa_server.js:236
+#, fuzzy
+#| msgid "This problem could not be saved."
+msgid "Attempt could not be removed."
+msgstr "Не удалось удалить работу."
+
+#: openassessment/xblock/static/js/openassessment-lms.min.js:1
+#: openassessment/xblock/static/js/openassessment-studio.min.js:1
+#: openassessment/xblock/static/js/src/oa_server.js:239
+msgid "Attempt could not be removed. Server error."
+msgstr "Не удалось удалить работу. Ошибка на сервере."
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:1
 #: openassessment/xblock/static/js/openassessment-studio.min.js:1
@@ -209,6 +223,18 @@ msgstr ""
 "будут потеряны."
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:2
+#: openassessment/xblock/static/js/src/lms/oa_response.js:112
+msgid "Are you sure you want to remove your answer?"
+msgstr "Вы уверены, что хотите удалить свою работу?"
+
+#: openassessment/xblock/static/js/openassessment-lms.min.js:2
+#: openassessment/xblock/static/js/src/lms/oa_response.js:115
+#, fuzzy
+#| msgid "Please wait"
+msgid "Please wait..."
+msgstr "Пожалуйста, подождите"
+
+#: openassessment/xblock/static/js/openassessment-lms.min.js:2
 #: openassessment/xblock/static/js/src/lms/oa_response.js:150
 msgid ""
 "After you upload new files all your previously uploaded files will be "
@@ -218,17 +244,17 @@ msgstr ""
 "Продолжить?"
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:2
-#: openassessment/xblock/static/js/src/lms/oa_response.js:301
+#: openassessment/xblock/static/js/src/lms/oa_response.js:307
 msgid "Status of Your Response"
 msgstr "Статус вашего ответа"
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:2
-#: openassessment/xblock/static/js/src/lms/oa_response.js:376
+#: openassessment/xblock/static/js/src/lms/oa_response.js:382
 msgid "This response has not been saved."
 msgstr "Ответ ещё не сохранён."
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:2
-#: openassessment/xblock/static/js/src/lms/oa_response.js:380
+#: openassessment/xblock/static/js/src/lms/oa_response.js:386
 msgid ""
 "If you leave this page without saving or submitting your response, you will "
 "lose any work you have done on the response."
@@ -237,27 +263,27 @@ msgstr ""
 "вами ответ будет потерян."
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:2
-#: openassessment/xblock/static/js/src/lms/oa_response.js:398
+#: openassessment/xblock/static/js/src/lms/oa_response.js:404
 msgid "Saving..."
 msgstr "Сохранение..."
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:2
-#: openassessment/xblock/static/js/src/lms/oa_response.js:420
+#: openassessment/xblock/static/js/src/lms/oa_response.js:426
 msgid "This response has been saved but not submitted."
 msgstr "Ответ сохранён, но ещё не отправлен на оценивание."
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:2
-#: openassessment/xblock/static/js/src/lms/oa_response.js:425
+#: openassessment/xblock/static/js/src/lms/oa_response.js:431
 msgid "Error"
 msgstr "Ошибка"
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:2
-#: openassessment/xblock/static/js/src/lms/oa_response.js:448
+#: openassessment/xblock/static/js/src/lms/oa_response.js:454
 msgid "Do you want to upload your file before submitting?"
 msgstr "Вы хотите загрузить файл до отправки ответа?"
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:2
-#: openassessment/xblock/static/js/src/lms/oa_response.js:526
+#: openassessment/xblock/static/js/src/lms/oa_response.js:541
 msgid ""
 "You're about to submit your response for this assignment. After you submit "
 "this response, you can't change it or submit a new response."
@@ -266,35 +292,35 @@ msgstr ""
 "не сможете изменить его или отправить новый ответ."
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:2
-#: openassessment/xblock/static/js/src/lms/oa_response.js:568
+#: openassessment/xblock/static/js/src/lms/oa_response.js:583
 msgid "File size must be 10MB or less."
 msgstr "Размер файла не должен превышать 10 Мб."
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:2
-#: openassessment/xblock/static/js/src/lms/oa_response.js:575
-#: openassessment/xblock/static/js/src/lms/oa_response.js:582
-#: openassessment/xblock/static/js/src/lms/oa_response.js:589
+#: openassessment/xblock/static/js/src/lms/oa_response.js:590
+#: openassessment/xblock/static/js/src/lms/oa_response.js:597
+#: openassessment/xblock/static/js/src/lms/oa_response.js:604
 msgid "You can upload files with these file types: "
 msgstr "Вы можете загрузить файлы следующих типов:"
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:2
-#: openassessment/xblock/static/js/src/lms/oa_response.js:597
+#: openassessment/xblock/static/js/src/lms/oa_response.js:612
 msgid "File type is not allowed."
 msgstr "Недопустимый тип файла"
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:2
-#: openassessment/xblock/static/js/src/lms/oa_response.js:639
-#: openassessment/xblock/static/js/src/lms/oa_response.js:645
+#: openassessment/xblock/static/js/src/lms/oa_response.js:654
+#: openassessment/xblock/static/js/src/lms/oa_response.js:660
 msgid "Describe "
 msgstr "Описание"
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:2
-#: openassessment/xblock/static/js/src/lms/oa_response.js:639
+#: openassessment/xblock/static/js/src/lms/oa_response.js:654
 msgid "(required):"
 msgstr "(обязательно):"
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:2
-#: openassessment/xblock/static/js/src/lms/oa_response.js:659
+#: openassessment/xblock/static/js/src/lms/oa_response.js:674
 msgid "Thumbnail view of "
 msgstr "Миниатюра"
 
@@ -443,22 +469,6 @@ msgstr "Необходимо заполнить список типов файл
 msgid "The following file types are not allowed: "
 msgstr "Следующие типы файлов недопустимы:"
 
-#: openassessment/xblock/static/js/src/lms/oa_response.js:112
-msgid "Are you sure you want to remove your answer?"
-msgstr "Вы уверены, что хотите удалить свою работу?"
-
-#: openassessment/xblock/static/js/src/lms/oa_response.js:115
-#, fuzzy
-#| msgid "Please wait"
-msgid "Please wait..."
-msgstr "Пожалуйста, подождите"
-
-#: openassessment/xblock/static/js/src/oa_server.js:236
-#, fuzzy
-#| msgid "This problem could not be saved."
-msgid "Attempt could not be removed."
-msgstr "Не удалось удалить работу."
-
-#: openassessment/xblock/static/js/src/oa_server.js:239
-msgid "Attempt could not be removed. Server error."
-msgstr "Не удалось удалить работу. Ошибка на сервере."
+#: openassessment/xblock/static/js/src/lms/oa_response.js:471
+msgid "You haven't uploaded any file. Are you sure you want to proceed?"
+msgstr "Вы не загрузили файл с ответом. Уверены, что хотите продолжить?"
