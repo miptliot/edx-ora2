@@ -41,8 +41,8 @@ OpenAssessment.ResponseView.prototype = {
     // before we can autosave.
     AUTO_SAVE_WAIT: 30000,
 
-    // Maximum size (10 MB) for all attached files.
-    MAX_FILES_SIZE: 10485760,
+    // Maximum size (30 MB) for all attached files.
+    MAX_FILES_SIZE: 31457280,
 
     UNSAVED_WARNING_KEY: "learner-response",
 
@@ -183,6 +183,18 @@ OpenAssessment.ResponseView.prototype = {
         }
     },
 
+    checkFilesFiledIsNotBlank: function(filesFiledIsNotBlank) {
+        $('.submission__answer__file', this.element).each(function() {
+            if (($(this).prop("tagName") === 'IMG') && ($(this).attr('src') !== '')) {
+                filesFiledIsNotBlank = true;
+            }
+            if (($(this).prop("tagName") === 'A') && ($(this).attr('href') !== '')) {
+                filesFiledIsNotBlank = true;
+            }
+        });
+        return filesFiledIsNotBlank;
+    },
+
     /**
      * Check that "submit" button could be enabled (or disabled)
      *
@@ -198,14 +210,8 @@ OpenAssessment.ResponseView.prototype = {
         });
 
         filesFiledIsNotBlank = filesFiledIsNotBlank || false;
-        $('.submission__answer__file', this.element).each(function() {
-            if (($(this).prop("tagName") === 'IMG') && ($(this).attr('src') !== '')) {
-                filesFiledIsNotBlank = true;
-            }
-            if (($(this).prop("tagName") === 'A') && ($(this).attr('href') !== '')) {
-                filesFiledIsNotBlank = true;
-            }
-        });
+        filesFiledIsNotBlank = this.checkFilesFiledIsNotBlank(filesFiledIsNotBlank);
+
         var readyToSubmit = true;
 
         if ((this.textResponse === 'required') && !textFieldsIsNotBlank) {
@@ -485,6 +491,15 @@ OpenAssessment.ResponseView.prototype = {
             }
         } else {
             fileDefer.resolve();
+        }
+
+        var filesFiledIsNotBlank = view.checkFilesFiledIsNotBlank(false);
+        if ((!filesFiledIsNotBlank) &&
+            ((view.fileUploadResponse === 'optional') || (view.fileUploadResponse === 'required'))) {
+            if (!confirm(gettext("You haven't uploaded any file. Are you sure you want to proceed?"))) {
+                view.submitEnabled(true);
+                return;
+            }
         }
 
         fileDefer
