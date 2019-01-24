@@ -218,6 +218,30 @@ if (typeof OpenAssessment.Server === "undefined" || !OpenAssessment.Server) {
         },
 
         /**
+         * Remove learner attempt.
+         *
+         * @returns {promise} A JQuery promise, which resolves with no arguments on success and
+         *      fails with an error message.
+         */
+        removeLearnersAttempt: function() {
+            var url = this.url('remove_learners_attempt');
+            return $.Deferred(function(defer) {
+                $.ajax({
+                    type: "POST",
+                    url: url
+                }).done(function(data) {
+                    if (data.success) {
+                        defer.resolve();
+                    } else {
+                        defer.rejectWith(this, [gettext("Attempt could not be removed.") + " " + data.msg]);
+                    }
+                }).fail(function() {
+                    defer.rejectWith(this, [gettext("Attempt could not be removed. Server error.")]);
+                });
+            }).promise();
+        },
+
+        /**
          * Submit feedback on assessments to the XBlock.
          *
          * @param {string} text written feedback from the student.
@@ -434,6 +458,7 @@ if (typeof OpenAssessment.Server === "undefined" || !OpenAssessment.Server) {
             var url = this.url('update_editor_context');
             var payload = JSON.stringify({
                 prompts: options.prompts,
+                prompts_type: options.prompts_type,
                 feedback_prompt: options.feedbackPrompt,
                 feedback_default_text: options.feedback_default_text,
                 title: options.title,
@@ -447,6 +472,7 @@ if (typeof OpenAssessment.Server === "undefined" || !OpenAssessment.Server) {
                 file_upload_type: options.fileUploadType,
                 white_listed_file_types: options.fileTypeWhiteList,
                 allow_latex: options.latexEnabled,
+                allow_learner_remove_attempt: options.allowLearnerRemoveAttempt,
                 leaderboard_show: options.leaderboardNum
             });
             return $.Deferred(function(defer) {

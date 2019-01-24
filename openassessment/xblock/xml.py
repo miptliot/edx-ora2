@@ -723,6 +723,9 @@ def serialize_content_to_xml(oa_block, root):
     if oa_block.white_listed_file_types:
         root.set('white_listed_file_types', unicode(oa_block.white_listed_file_types_string))
 
+    if oa_block.allow_learner_remove_attempt is not None:
+        root.set('allow_learner_remove_attempt', unicode(oa_block.allow_learner_remove_attempt))
+
     if oa_block.allow_latex is not None:
         root.set('allow_latex', unicode(oa_block.allow_latex))
 
@@ -737,6 +740,8 @@ def serialize_content_to_xml(oa_block, root):
     # Prompts
     prompts_root = etree.SubElement(root, 'prompts')
     _serialize_prompts(prompts_root, oa_block.prompts)
+
+    root.set('prompts_type', unicode(oa_block.prompts_type))
 
     # Rubric
     rubric_root = etree.SubElement(root, 'rubric')
@@ -868,6 +873,10 @@ def parse_from_xml(root):
     if 'white_listed_file_types' in root.attrib:
         white_listed_file_types = unicode(root.attrib['white_listed_file_types'])
 
+    allow_learner_remove_attempt = False
+    if 'allow_learner_remove_attempt' in root.attrib:
+        allow_learner_remove_attempt = _parse_boolean(unicode(root.attrib['allow_learner_remove_attempt']))
+
     allow_latex = False
     if 'allow_latex' in root.attrib:
         allow_latex = _parse_boolean(unicode(root.attrib['allow_latex']))
@@ -889,6 +898,10 @@ def parse_from_xml(root):
     # Retrieve the prompts
     prompts = _parse_prompts_xml(root)
 
+    prompts_type = 'text'
+    if 'prompts_type' in root.attrib:
+        prompts_type = unicode(root.attrib['prompts_type'])
+
     # Retrieve the leaderboard if it exists, otherwise set it to 0
     leaderboard_show = 0
     if 'leaderboard_show' in root.attrib:
@@ -907,6 +920,7 @@ def parse_from_xml(root):
     return {
         'title': title,
         'prompts': prompts,
+        'prompts_type': prompts_type,
         'rubric_criteria': rubric['criteria'],
         'rubric_assessments': assessments,
         'rubric_feedback_prompt': rubric['feedbackprompt'],
@@ -918,6 +932,7 @@ def parse_from_xml(root):
         'allow_file_upload': allow_file_upload,
         'file_upload_type': file_upload_type,
         'white_listed_file_types': white_listed_file_types,
+        'allow_learner_remove_attempt': allow_learner_remove_attempt,
         'allow_latex': allow_latex,
         'leaderboard_show': leaderboard_show
     }

@@ -156,6 +156,12 @@ class OpenAssessmentBlock(MessageMixin,
         help="Custom list of file types allowed with submission."
     )
 
+    allow_learner_remove_attempt = Boolean(
+        default=False,
+        scope=Scope.settings,
+        help="Allow learners to remove answer."
+    )
+
     allow_latex = Boolean(
         default=False,
         scope=Scope.settings,
@@ -178,6 +184,12 @@ class OpenAssessmentBlock(MessageMixin,
         default=DEFAULT_PROMPT,
         scope=Scope.content,
         help="The prompts to display to a student."
+    )
+
+    prompts_type = String(
+        default='text',
+        scope=Scope.content,
+        help="The type of prompt. html or text"
     )
 
     rubric_criteria = List(
@@ -411,6 +423,7 @@ class OpenAssessmentBlock(MessageMixin,
         context_dict = {
             "title": self.title,
             "prompts": self.prompts,
+            "prompts_type": self.prompts_type,
             "rubric_assessments": ui_models,
             "show_staff_area": self.is_course_staff and not self.in_studio_preview,
         }
@@ -706,6 +719,7 @@ class OpenAssessmentBlock(MessageMixin,
         block.submission_due = config['submission_due']
         block.title = config['title']
         block.prompts = config['prompts']
+        block.prompts_type = config['prompts_type']
         block.text_response = config['text_response']
         block.file_upload_response = config['file_upload_response']
         block.allow_file_upload = config['allow_file_upload']

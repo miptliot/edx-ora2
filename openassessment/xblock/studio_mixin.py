@@ -132,9 +132,11 @@ class StudioMixin(object):
         feedback_default_text = copy.deepcopy(self.rubric_feedback_default_text)
         if not feedback_default_text:
             feedback_default_text = DEFAULT_RUBRIC_FEEDBACK_TEXT
+        course_id = self.location.course_key if hasattr(self, 'location') else None
 
         return {
             'prompts': self.prompts,
+            'prompts_type': self.prompts_type,
             'title': self.title,
             'submission_due': submission_due,
             'submission_start': submission_start,
@@ -147,12 +149,14 @@ class StudioMixin(object):
             'necessity_options': self.NECESSITY_OPTIONS,
             'file_upload_type': self.file_upload_type,
             'white_listed_file_types': self.white_listed_file_types_string,
+            'allow_learner_remove_attempt': self.allow_learner_remove_attempt,
             'allow_latex': self.allow_latex,
             'leaderboard_show': self.leaderboard_show,
             'editor_assessments_order': [
                 make_django_template_key(asmnt)
                 for asmnt in self.editor_assessments_order
             ],
+            'base_asset_url': self._get_base_url_path_for_course_assets(course_id),
             'is_released': self.is_released(),
         }
 
@@ -255,6 +259,7 @@ class StudioMixin(object):
         self.title = data['title']
         self.display_name = data['title']
         self.prompts = data['prompts']
+        self.prompts_type = data['prompts_type']
         self.rubric_criteria = data['criteria']
         self.rubric_assessments = data['assessments']
         self.editor_assessments_order = data['editor_assessments_order']
@@ -270,6 +275,7 @@ class StudioMixin(object):
         else:
             self.file_upload_type = None
             self.white_listed_file_types_string = None
+        self.allow_learner_remove_attempt = bool(data['allow_learner_remove_attempt'])
         self.allow_latex = bool(data['allow_latex'])
         self.leaderboard_show = data['leaderboard_show']
 
@@ -410,3 +416,17 @@ class StudioMixin(object):
             for i in range(len(sorted_superset_indices)):
                 superset[sorted_superset_indices[i]] = subset[i]
         return superset
+
+    def _get_base_url_path_for_course_assets(self, course_key):
+        """
+        Returns base url path for course assets
+        """
+        if course_key is None:
+            return None
+
+        placeholder_id = uuid4().hex
+        # create a dummy asset location with a fake but unique name. strip off the name, and return it
+        url_path = unicode(course_key.make_asset_key('asset', placeholder_id).for_branch(None))
+        if not url_path.startswith('/'):
+            url_path = '/' + url_path
+        return url_path.replace(placeholder_id, '')

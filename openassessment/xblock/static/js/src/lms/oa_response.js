@@ -41,8 +41,8 @@ OpenAssessment.ResponseView.prototype = {
     // before we can autosave.
     AUTO_SAVE_WAIT: 30000,
 
-    // Maximum size (10 MB) for all attached files.
-    MAX_FILES_SIZE: 10485760,
+    // Maximum size (30 MB) for all attached files.
+    MAX_FILES_SIZE: 31457280,
 
     UNSAVED_WARNING_KEY: "learner-response",
 
@@ -106,6 +106,27 @@ OpenAssessment.ResponseView.prototype = {
             }
         );
 
+        sel.find('.remove-learners-attempt').click(
+            function(eventObject) {
+                eventObject.preventDefault();
+                if (window.confirm(gettext("Are you sure you want to remove your answer?"))) {
+                    var self = $(this);
+                    var btnText = self.html();
+                    self.prop('disabled', true).html(gettext("Please wait..."));
+                    view.server.removeLearnersAttempt().done(
+                        function() {
+                            view.baseView.load();
+                        }
+                    ).fail(
+                        function(msg) {
+                            self.removeProp('disabled').html(btnText);
+                            alert(msg);
+                        }
+                    );
+                }
+            }
+        );
+
         // Install a click handler for the save button
         sel.find('.submission__save').click(
             function(eventObject) {
@@ -160,6 +181,18 @@ OpenAssessment.ResponseView.prototype = {
         }
     },
 
+    checkFilesFiledIsNotBlank: function(filesFiledIsNotBlank) {
+        $('.submission__answer__file', this.element).each(function() {
+            if (($(this).prop("tagName") === 'IMG') && ($(this).attr('src') !== '')) {
+                filesFiledIsNotBlank = true;
+            }
+            if (($(this).prop("tagName") === 'A') && ($(this).attr('href') !== '')) {
+                filesFiledIsNotBlank = true;
+            }
+        });
+        return filesFiledIsNotBlank;
+    },
+
     /**
      * Check that "submit" button could be enabled (or disabled)
      *
@@ -175,14 +208,8 @@ OpenAssessment.ResponseView.prototype = {
         });
 
         filesFiledIsNotBlank = filesFiledIsNotBlank || false;
-        $('.submission__answer__file', this.element).each(function() {
-            if (($(this).prop("tagName") === 'IMG') && ($(this).attr('src') !== '')) {
-                filesFiledIsNotBlank = true;
-            }
-            if (($(this).prop("tagName") === 'A') && ($(this).attr('href') !== '')) {
-                filesFiledIsNotBlank = true;
-            }
-        });
+        filesFiledIsNotBlank = this.checkFilesFiledIsNotBlank(filesFiledIsNotBlank);
+
         var readyToSubmit = true;
 
         if ((this.textResponse === 'required') && !textFieldsIsNotBlank) {
@@ -436,6 +463,15 @@ OpenAssessment.ResponseView.prototype = {
             }
         } else {
             fileDefer.resolve();
+        }
+
+        var filesFiledIsNotBlank = view.checkFilesFiledIsNotBlank(false);
+        if ((!filesFiledIsNotBlank) &&
+            ((view.fileUploadResponse === 'optional') || (view.fileUploadResponse === 'required'))) {
+            if (!confirm(gettext("You haven't uploaded any file. Are you sure you want to proceed?"))) {
+                view.submitEnabled(true);
+                return;
+            }
         }
 
         fileDefer

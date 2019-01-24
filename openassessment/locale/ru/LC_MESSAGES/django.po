@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: edx-platform\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-14 18:17-0400\n"
+"POT-Creation-Date: 2019-01-17 17:53-0500\n"
 "PO-Revision-Date: 2018-02-21 18:54+0000\n"
 "Last-Translator: Liubov Fomicheva <liubov.nelapa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/open-edx/edx-platform/"
@@ -36,11 +36,11 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: openassessment/assessment/api/student_training.py:176
+#: openassessment/assessment/api/student_training.py:180
 msgid "Could not parse serialized rubric"
 msgstr "Невозможно распознать сериализованные правила оценивания"
 
-#: openassessment/assessment/api/student_training.py:188
+#: openassessment/assessment/api/student_training.py:192
 msgid ""
 "If your assignment includes a learner training step, the rubric must have at "
 "least one criterion, and that criterion must have at least one option."
@@ -48,12 +48,12 @@ msgstr ""
 "Если ваше задание включает шаг обучения, при оценивании необходимо "
 "использовать хотя бы один критерий, который содержит не менее одной опции."
 
-#: openassessment/assessment/api/student_training.py:200
+#: openassessment/assessment/api/student_training.py:204
 #, python-brace-format
 msgid "Example {example_number} has a validation error: {error}"
 msgstr "При проверке примера {example_number} обнаружена ошибка: {error}"
 
-#: openassessment/assessment/api/student_training.py:214
+#: openassessment/assessment/api/student_training.py:218
 #, python-brace-format
 msgid ""
 "Example {example_number} has an invalid option for \"{criterion_name}\": "
@@ -62,13 +62,13 @@ msgstr ""
 "Некорректная опция для критерия «{criterion_name}» в примере "
 "{example_number}: «{option_name}»"
 
-#: openassessment/assessment/api/student_training.py:224
+#: openassessment/assessment/api/student_training.py:228
 #, python-brace-format
 msgid "Example {example_number} has an extra option for \"{criterion_name}\""
 msgstr ""
 "Лишняя опция для критерия «{criterion_name}» в примере {example_number}"
 
-#: openassessment/assessment/api/student_training.py:237
+#: openassessment/assessment/api/student_training.py:241
 #, python-brace-format
 msgid "Example {example_number} is missing an option for \"{criterion_name}\""
 msgstr ""
@@ -207,30 +207,44 @@ msgstr ""
 "запятую. Например: pdf,doc,docx."
 
 #: openassessment/templates/openassessmentblock/edit/oa_edit.html:159
-msgid "Allow LaTeX Responses"
-msgstr "Разрешить ответы в LaTeX"
+#, fuzzy
+#| msgid "Allow LaTeX Responses"
+msgid "Allow Learners To Remove Answer"
+msgstr "Разрешить студентам удалять свою работу"
 
 #: openassessment/templates/openassessmentblock/edit/oa_edit.html:161
+#: openassessment/templates/openassessmentblock/edit/oa_edit.html:171
 #: openassessment/templates/openassessmentblock/edit/oa_edit_peer_assessment.html:80
 msgid "False"
 msgstr "Нет"
 
 #: openassessment/templates/openassessmentblock/edit/oa_edit.html:162
+#: openassessment/templates/openassessmentblock/edit/oa_edit.html:172
 #: openassessment/templates/openassessmentblock/edit/oa_edit_peer_assessment.html:81
 msgid "True"
 msgstr "Да"
 
 #: openassessment/templates/openassessmentblock/edit/oa_edit.html:165
+#, fuzzy
+#| msgid "Specify whether learners can write LaTeX formatted strings"
+msgid "Specify whether learners can remove answers"
+msgstr "Укажите, могут ли обучающиеся удалять свои ответы"
+
+#: openassessment/templates/openassessmentblock/edit/oa_edit.html:169
+msgid "Allow LaTeX Responses"
+msgstr "Разрешить ответы в LaTeX"
+
+#: openassessment/templates/openassessmentblock/edit/oa_edit.html:175
 msgid "Specify whether learners can write LaTeX formatted strings"
 msgstr "Укажите, могут ли обучающиеся использовать LaTeX в ответах"
 
-#: openassessment/templates/openassessmentblock/edit/oa_edit.html:169
+#: openassessment/templates/openassessmentblock/edit/oa_edit.html:179
 #: openassessment/templates/openassessmentblock/leaderboard/oa_leaderboard_show.html:8
 #: openassessment/templates/openassessmentblock/leaderboard/oa_leaderboard_waiting.html:8
 msgid "Top Responses"
 msgstr "Показывать лучшие ответы"
 
-#: openassessment/templates/openassessmentblock/edit/oa_edit.html:178
+#: openassessment/templates/openassessmentblock/edit/oa_edit.html:188
 msgid ""
 "Specify the number of top scoring responses to display. Valid numbers are 0 "
 "to 99. If the number is 0, the Top Responses section does not appear to "
@@ -239,7 +253,7 @@ msgstr ""
 "Укажите, сколько отображать лучших ответов.  Можно использовать числа от 0 "
 "до 99.  Если введён 0, раздел лучших ответов не отображается для слушателей."
 
-#: openassessment/templates/openassessmentblock/edit/oa_edit.html:185
+#: openassessment/templates/openassessmentblock/edit/oa_edit.html:195
 #, fuzzy
 #| msgid ""
 #| "In this assignment, you can include learner training, peer assessment, "
@@ -266,8 +280,7 @@ msgstr ""
 "оно должно быть последним шагом. После того, как вы выпустите задание, вы не "
 "сможете изменить тип и количество шагов оценки."
 
-#: openassessment/templates/openassessmentblock/edit/oa_edit.html:187
-#: openassessment/templates/openassessmentblock/edit/oa_edit.html:184
+#: openassessment/templates/openassessmentblock/edit/oa_edit.html:197
 msgid ""
 "In this assignment, you can include learner training, peer assessment, self "
 "assessment, and staff assessment steps. Select the steps that you want "
@@ -284,17 +297,17 @@ msgstr ""
 "оно должно быть последним шагом. После того, как вы выпустите задание, вы не "
 "сможете изменить тип и количество шагов оценки."
 
-#: openassessment/templates/openassessmentblock/edit/oa_edit.html:200
+#: openassessment/templates/openassessmentblock/edit/oa_edit.html:214
 msgid "Save"
 msgstr "Сохранить"
 
-#: openassessment/templates/openassessmentblock/edit/oa_edit.html:204
+#: openassessment/templates/openassessmentblock/edit/oa_edit.html:218
 msgid "Cancel"
 msgstr "Отмена"
 
 #: openassessment/templates/openassessmentblock/edit/oa_edit_criterion.html:6
-#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:100
-#: openassessment/templates/openassessmentblock/staff_area/oa_student_info_assessment_detail.html:25
+#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:105
+#: openassessment/templates/openassessmentblock/staff_area/oa_student_info_assessment_detail.html:26
 msgid "Criterion"
 msgstr "Критерий"
 
@@ -326,19 +339,19 @@ msgid "Feedback for This Criterion"
 msgstr "Отзыв по этому критерию"
 
 #: openassessment/templates/openassessmentblock/edit/oa_edit_criterion.html:54
-#: openassessment/xblock/studio_mixin.py:47
+#: openassessment/xblock/studio_mixin.py:50
 msgid "None"
 msgstr "Нет"
 
 #: openassessment/templates/openassessmentblock/edit/oa_edit_criterion.html:55
-#: openassessment/xblock/studio_mixin.py:46
+#: openassessment/xblock/studio_mixin.py:49
 msgid "Optional"
 msgstr "Необязательно"
 
 #: openassessment/templates/openassessmentblock/edit/oa_edit_criterion.html:56
 #: openassessment/templates/openassessmentblock/oa_rubric.html:13
 #: openassessment/templates/openassessmentblock/student_training/student_training.html:92
-#: openassessment/xblock/studio_mixin.py:45
+#: openassessment/xblock/studio_mixin.py:48
 msgid "Required"
 msgstr "Требуется"
 
@@ -448,7 +461,7 @@ msgstr ""
 
 #: openassessment/templates/openassessmentblock/edit/oa_edit_peer_assessment.html:57
 #: openassessment/templates/openassessmentblock/edit/oa_edit_self_assessment.html:43
-#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:92
+#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:137
 msgid "Due Date"
 msgstr "Срок сдачи"
 
@@ -464,7 +477,8 @@ msgstr ""
 
 #: openassessment/templates/openassessmentblock/edit/oa_edit_peer_assessment.html:78
 msgid "Allow students to see peer assessments results"
-msgstr "Разрешить студенам видеть оценки, которые им поставили другие слушатели"
+msgstr ""
+"Разрешить студенам видеть оценки, которые им поставили другие слушатели"
 
 #: openassessment/templates/openassessmentblock/edit/oa_edit_prompt.html:8
 msgid "You cannot delete a prompt after the assignment has been released."
@@ -829,7 +843,7 @@ msgstr ""
 
 #: openassessment/templates/openassessmentblock/instructor_dashboard/oa_grade_available_responses.html:15
 #: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:9
-#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:126
+#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:171
 msgid "Grade Available Responses"
 msgstr "Оценить доступные ответы"
 
@@ -852,7 +866,7 @@ msgstr "%(num_points)s баллов"
 
 #: openassessment/templates/openassessmentblock/leaderboard/oa_leaderboard_show.html:24
 #: openassessment/templates/openassessmentblock/peer/oa_peer_assessment.html:68
-#: openassessment/templates/openassessmentblock/peer/oa_peer_turbo_mode.html:51
+#: openassessment/templates/openassessmentblock/peer/oa_peer_turbo_mode.html:52
 msgid "Your peer's response to the prompt above"
 msgstr "Ответ вашего однокурсника на приведённый выше вопрос:"
 
@@ -1073,11 +1087,11 @@ msgstr "Примечания"
 msgid "The question for this section"
 msgstr "Вопрос для этого раздела"
 
-#: openassessment/templates/openassessmentblock/oa_uploaded_file.html:28
+#: openassessment/templates/openassessmentblock/oa_uploaded_file.html:29
 msgid "View the files associated with this submission:"
 msgstr "Просмотр файлов, связанных с этим ответом."
 
-#: openassessment/templates/openassessmentblock/oa_uploaded_file.html:36
+#: openassessment/templates/openassessmentblock/oa_uploaded_file.html:38
 msgid ""
 "Caution: These files were uploaded by another course learner and have not "
 "been verified, screened, approved, reviewed, or endorsed by the site "
@@ -1091,9 +1105,9 @@ msgstr ""
 msgid "Assess Peers"
 msgstr "Оценивание работ однокурсников"
 
-#. Translators: This string displays a date to the user, then tells them the
-#. time until that date.  Example: "available August 13th, 2014 (in 5 days and
-#. 45 minutes)"
+#. Translators: This string displays a date to the user, then tells them the time until that date.  Example: "available August 13th, 2014 00:00 UTC (in 5 days and 45 minutes)"
+#. Translators: This string displays a date to the user, then tells them the time until that date.  Example: "available August 13th, 2014 (in 5 days and 45 minutes)"
+#. Translators: This string displays a date to the user, then tells them the time until that date.  Example: "available August 13th, 2014 (in 5 days and 45 minutes)"
 #: openassessment/templates/openassessmentblock/peer/oa_peer_assessment.html:24
 #: openassessment/templates/openassessmentblock/response/oa_response.html:20
 #: openassessment/templates/openassessmentblock/student_training/student_training.html:20
@@ -1111,15 +1125,9 @@ msgstr ""
 "timezone=\"%(user_timezone)s\" data-language=\"%(user_language)s\"></span>\n"
 "                        "
 
-#. Translators: This string displays a date to the user, then tells them the
-#. time until that date.  Example: "due August 13th, 2014 00:00 UTC (in 5 days
-#. and 45 minutes)"
-#. Translators: This string displays a date to the user, then tells them the
-#. time until that date.  Example: "due August 13th, 2014 (in 5 days and 45
-#. minutes)"
-#. Translators: This string displays a date to the user, then tells them the
-#. time until that date.  Example: "due August 13th, 2014 (in 5 days and 45
-#. minutes)"
+#. Translators: This string displays a date to the user, then tells them the time until that date.  Example: "due August 13th, 2014 00:00 UTC (in 5 days and 45 minutes)"
+#. Translators: This string displays a date to the user, then tells them the time until that date.  Example: "due August 13th, 2014 (in 5 days and 45 minutes)"
+#. Translators: This string displays a date to the user, then tells them the time until that date.  Example: "due August 13th, 2014 (in 5 days and 45 minutes)"
 #: openassessment/templates/openassessmentblock/peer/oa_peer_assessment.html:31
 #: openassessment/templates/openassessmentblock/response/oa_response.html:27
 #: openassessment/templates/openassessmentblock/student_training/student_training.html:27
@@ -1156,7 +1164,7 @@ msgid "Read and assess the following response from one of your peers."
 msgstr "Прочитайте и оцените следующий ответ одного из ваших однокурсников."
 
 #: openassessment/templates/openassessmentblock/peer/oa_peer_assessment.html:71
-#: openassessment/templates/openassessmentblock/peer/oa_peer_turbo_mode.html:54
+#: openassessment/templates/openassessmentblock/peer/oa_peer_turbo_mode.html:55
 #: openassessment/templates/openassessmentblock/self/oa_self_assessment.html:54
 #: openassessment/templates/openassessmentblock/staff_area/oa_staff_grade_learners_assessment.html:28
 #: openassessment/templates/openassessmentblock/staff_area/oa_staff_override_assessment.html:27
@@ -1165,7 +1173,7 @@ msgid "Associated Files"
 msgstr "Приложенные файлы"
 
 #: openassessment/templates/openassessmentblock/peer/oa_peer_assessment.html:85
-#: openassessment/templates/openassessmentblock/peer/oa_peer_turbo_mode.html:68
+#: openassessment/templates/openassessmentblock/peer/oa_peer_turbo_mode.html:69
 #: openassessment/templates/openassessmentblock/self/oa_self_assessment.html:65
 #: openassessment/templates/openassessmentblock/staff_area/oa_staff_grade_learners_assessment.html:40
 #: openassessment/templates/openassessmentblock/staff_area/oa_staff_override_assessment.html:39
@@ -1176,7 +1184,7 @@ msgstr "Не удалось отправить поставленную вами
 #: openassessment/templates/openassessmentblock/response/oa_response_cancelled.html:19
 #: openassessment/templates/openassessmentblock/self/oa_self_cancelled.html:21
 #: openassessment/templates/openassessmentblock/student_training/student_training_cancelled.html:18
-#: openassessment/xblock/staff_assessment_mixin.py:106
+#: openassessment/xblock/staff_assessment_mixin.py:109
 msgid "Cancelled"
 msgstr "Отменено"
 
@@ -1222,7 +1230,21 @@ msgstr ""
 msgid "We could not retrieve additional submissions for assessment"
 msgstr "Мы не смогли получить дополнительные материалы для оценки"
 
+#: openassessment/templates/openassessmentblock/peer/oa_peer_complete.html:40
+msgid "To check specific submission enter it's ID."
+msgstr ""
+
 #: openassessment/templates/openassessmentblock/peer/oa_peer_complete.html:41
+msgid "You will get this submission if it is possible."
+msgstr ""
+
+#: openassessment/templates/openassessmentblock/peer/oa_peer_complete.html:46
+#, fuzzy
+#| msgid "Remove submission"
+msgid "Enter submission ID"
+msgstr "Удалить ответ"
+
+#: openassessment/templates/openassessmentblock/peer/oa_peer_complete.html:52
 msgid "Continue Assessing Peers"
 msgstr "Продолжить оценку работ других слушателей"
 
@@ -1238,6 +1260,10 @@ msgstr ""
 "        Завершено (%(num_graded)s)\n"
 "      "
 
+#: openassessment/templates/openassessmentblock/peer/oa_peer_turbo_mode.html:44
+msgid "Sumbission ID:"
+msgstr ""
+
 #: openassessment/templates/openassessmentblock/peer/oa_peer_turbo_mode_waiting.html:36
 msgid ""
 "All submitted peer responses have been assessed. Check back later to see if "
@@ -1250,8 +1276,8 @@ msgstr ""
 #: openassessment/templates/openassessmentblock/response/oa_response_unavailable.html:17
 #: openassessment/templates/openassessmentblock/self/oa_self_unavailable.html:17
 #: openassessment/templates/openassessmentblock/student_training/student_training_unavailable.html:16
-#: openassessment/xblock/staff_assessment_mixin.py:99
-#: openassessment/xblock/staff_assessment_mixin.py:123
+#: openassessment/xblock/staff_assessment_mixin.py:102
+#: openassessment/xblock/staff_assessment_mixin.py:126
 msgid "Not Available"
 msgstr "Недоступно"
 
@@ -1426,19 +1452,19 @@ msgstr ""
 #: openassessment/templates/openassessmentblock/response/oa_response_submitted.html:18
 #: openassessment/templates/openassessmentblock/self/oa_self_complete.html:18
 #: openassessment/templates/openassessmentblock/student_training/student_training_complete.html:17
-#: openassessment/xblock/staff_assessment_mixin.py:113
-#: openassessment/xblock/staff_assessment_mixin.py:134
+#: openassessment/xblock/staff_assessment_mixin.py:116
+#: openassessment/xblock/staff_assessment_mixin.py:137
 msgid "Complete"
 msgstr "Завершено"
 
 #: openassessment/templates/openassessmentblock/response/oa_response_graded.html:28
-#: openassessment/templates/openassessmentblock/response/oa_response_submitted.html:49
+#: openassessment/templates/openassessmentblock/response/oa_response_submitted.html:53
 #: openassessment/templates/openassessmentblock/self/oa_self_assessment.html:51
 msgid "Your response"
 msgstr "Ваш ответ"
 
 #: openassessment/templates/openassessmentblock/response/oa_response_graded.html:31
-#: openassessment/templates/openassessmentblock/response/oa_response_submitted.html:52
+#: openassessment/templates/openassessmentblock/response/oa_response_submitted.html:56
 msgid "Your Uploaded Files"
 msgstr "Загруженные вами файлы"
 
@@ -1486,6 +1512,16 @@ msgstr ""
 "\n"
 "Вы должны выполнить шаг %(start_tag)sсамооценивания%(end_tag)s.\n"
 "   "
+
+#: openassessment/templates/openassessmentblock/response/oa_response_submitted.html:45
+#, fuzzy
+#| msgid "Your Submission Status"
+msgid "Your submission ID is:"
+msgstr "Статус сданной на проверку работы"
+
+#: openassessment/templates/openassessmentblock/response/oa_response_submitted.html:63
+msgid "Remove Your Answer"
+msgstr "Удалить свою работу"
 
 #: openassessment/templates/openassessmentblock/self/oa_self_assessment.html:17
 msgid "Assess Your Response"
@@ -1538,7 +1574,7 @@ msgstr ""
 "оценку «Не завершено»."
 
 #: openassessment/templates/openassessmentblock/staff/oa_staff_grade.html:13
-#: openassessment/xblock/grade_mixin.py:335
+#: openassessment/xblock/grade_mixin.py:345
 msgid "Staff Grade"
 msgstr "Оценка командой курса"
 
@@ -1548,13 +1584,13 @@ msgid "Manage Individual Learners"
 msgstr "Управление отдельными слушателями"
 
 #: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:7
-#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:44
+#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:89
 msgid "View Assignment Statistics"
 msgstr "Статистика оценивания"
 
 #: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:15
-#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:42
-#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:124
+#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:87
+#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:169
 msgid "Close"
 msgstr "Закрыть"
 
@@ -1609,37 +1645,36 @@ msgid "Reschedule All Unfinished Example-Based Assessment Grading Tasks"
 msgstr ""
 
 #: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:96
-#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:51
 msgid "Response total"
 msgstr "Всего ответов"
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:57
+#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:102
 msgid "Location"
 msgstr "Местонахождение"
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:63
+#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:108
 msgid "Learner Progress"
 msgstr "Достижения слушателя"
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:67
-#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:90
+#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:112
+#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:135
 msgid "Problem Step"
 msgstr "Шаг задания"
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:68
+#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:113
 msgid "Active Learners in Step"
 msgstr "Количество активных слушателей на шаге"
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:86
+#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:131
 msgid "Dates"
 msgstr "Даты"
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:91
+#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:136
 msgid "Release Date"
 msgstr "Дата выпуска"
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:104
-#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:110
+#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:149
+#: openassessment/templates/openassessmentblock/staff_area/oa_staff_area.html:155
 msgid "N/A"
 msgstr "Нет"
 
@@ -1780,11 +1815,11 @@ msgstr "Взаимное оценивание"
 msgid "Staff Assessment for This Learner"
 msgstr "Оценка командой курса"
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:81
+#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:86
 msgid "Learner's Final Grade"
 msgstr "Итоговая оценка"
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:90
+#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:95
 #, python-format
 msgid ""
 "\n"
@@ -1796,11 +1831,11 @@ msgstr ""
 "Итоговая оценка: %(points_earned)s из %(points_possible)s\n"
 "                        "
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:97
+#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:102
 msgid "Final Grade Details"
 msgstr "Детали итоговой оценки"
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:117
+#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:122
 #, python-format
 msgid ""
 "\n"
@@ -1833,15 +1868,15 @@ msgstr[3] ""
 "баллов\n"
 "                                    "
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:132
+#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:137
 msgid "Feedback Recorded"
 msgstr "Отзыв сохранён"
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:143
+#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:148
 msgid "The submission is waiting for assessments."
 msgstr "Ответ ожидает оценки."
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:147
+#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:152
 msgid ""
 "The learner's submission has been removed from peer assessment. The learner "
 "receives a grade of zero unless you delete the learner's state for the "
@@ -1851,41 +1886,41 @@ msgstr ""
 "удалите статус выполненного слушателем задания, чтобы он смог отправить "
 "ответ заново, то слушатель получит нулевую оценку."
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:151
+#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:156
 msgid "The problem has not been started."
 msgstr "Задание не начато."
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:155
+#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:160
 msgid "The problem has not been completed."
 msgstr "Задание не завершено."
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:167
+#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:172
 msgid "Submit Assessment Grade Override"
 msgstr "Применить изменение оценки"
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:183
+#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:188
 msgid "Remove Submission From Peer Grading"
 msgstr "Удалить ответ из результатов взаимного оценивания"
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:192
+#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:197
 msgid "Caution: This Action Cannot Be Undone"
 msgstr "Внимание: это действие необратимо"
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:193
+#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:198
 msgid ""
 "Removing a learner's submission cannot be undone and should be done with "
 "caution."
 msgstr "Удаление ответа слушателя необратимо. Используйте осторожно."
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:198
+#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:203
 msgid "Comments:"
 msgstr "Комментарии:"
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:207
+#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:212
 msgid "Remove submission"
 msgstr "Удалить ответ"
 
-#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:222
+#: openassessment/templates/openassessmentblock/staff_area/oa_student_info.html:227
 msgid "A response was not found for this learner."
 msgstr "Ответ этого слушателя не найден."
 
@@ -2016,58 +2051,58 @@ msgstr "Ошибка загрузки тренировочных примеро�
 msgid "The Learner Training Step of this assignment could not be loaded."
 msgstr "Не удалось загрузить шаг обучения для этого задания."
 
-#: openassessment/xblock/data_conversion.py:244
+#: openassessment/xblock/data_conversion.py:238
 msgid "You must provide options selected in the assessment."
 msgstr "При оценивании, вам необходимо следовать следующим критериям."
 
-#: openassessment/xblock/data_conversion.py:247
+#: openassessment/xblock/data_conversion.py:241
 msgid "You must provide overall feedback in the assessment."
 msgstr "Для оценивания, вы должны представить отзыв."
 
-#: openassessment/xblock/data_conversion.py:250
+#: openassessment/xblock/data_conversion.py:244
 msgid "You must provide feedback for criteria in the assessment."
 msgstr "Вам необходимо оставить отзыв в соответствии с критерием"
 
-#: openassessment/xblock/grade_mixin.py:73
+#: openassessment/xblock/grade_mixin.py:75
 #: openassessment/xblock/leaderboard_mixin.py:52
-#: openassessment/xblock/self_assessment_mixin.py:40
-#: openassessment/xblock/student_training_mixin.py:57
-#: openassessment/xblock/student_training_mixin.py:212
+#: openassessment/xblock/self_assessment_mixin.py:39
+#: openassessment/xblock/student_training_mixin.py:56
+#: openassessment/xblock/student_training_mixin.py:207
 msgid "An unexpected error occurred."
 msgstr "Произошла неизвестная ошибка"
 
-#: openassessment/xblock/grade_mixin.py:164
+#: openassessment/xblock/grade_mixin.py:173
 msgid "Peer Assessment"
 msgstr "Взаимное оценивание"
 
-#: openassessment/xblock/grade_mixin.py:166
+#: openassessment/xblock/grade_mixin.py:175
 msgid "Self Assessment"
 msgstr "Оценка своей работы"
 
-#: openassessment/xblock/grade_mixin.py:199
+#: openassessment/xblock/grade_mixin.py:208
 msgid "Assessment feedback could not be saved."
 msgstr "Не удалось сохранить отзыв."
 
-#: openassessment/xblock/grade_mixin.py:210
+#: openassessment/xblock/grade_mixin.py:219
 msgid "Feedback saved."
 msgstr "Отзыв сохранён."
 
-#: openassessment/xblock/grade_mixin.py:336
-#: openassessment/xblock/grade_mixin.py:479
+#: openassessment/xblock/grade_mixin.py:346
+#: openassessment/xblock/grade_mixin.py:494
 msgid "Staff Comments"
 msgstr "Комментарии команды курса"
 
-#: openassessment/xblock/grade_mixin.py:342
+#: openassessment/xblock/grade_mixin.py:352
 msgid "Peer Median Grade"
 msgstr "Средняя оценка сокурсниками"
 
-#: openassessment/xblock/grade_mixin.py:347
-#: openassessment/xblock/grade_mixin.py:486
+#: openassessment/xblock/grade_mixin.py:357
+#: openassessment/xblock/grade_mixin.py:501
 #, python-brace-format
 msgid "Peer {peer_index}"
 msgstr "Сокурсник {peer_index}"
 
-#: openassessment/xblock/grade_mixin.py:348
+#: openassessment/xblock/grade_mixin.py:358
 msgid "Peer Comments"
 msgstr "Комментарии однокурсников"
 
@@ -2082,24 +2117,23 @@ msgid "Example-Based Comments"
 msgstr "Комментарии однокурсников"
 
 #: openassessment/xblock/grade_mixin.py:371
-#: openassessment/xblock/grade_mixin.py:358
 msgid "Self Assessment Grade"
 msgstr "Самооценка"
 
-#: openassessment/xblock/grade_mixin.py:358
+#: openassessment/xblock/grade_mixin.py:371
 msgid "Your Self Assessment"
 msgstr "Ваша оценка своей работы"
 
-#: openassessment/xblock/grade_mixin.py:359
-#: openassessment/xblock/grade_mixin.py:498
+#: openassessment/xblock/grade_mixin.py:372
+#: openassessment/xblock/grade_mixin.py:513
 msgid "Your Comments"
 msgstr "Ваши комментарии"
 
-#: openassessment/xblock/grade_mixin.py:451
+#: openassessment/xblock/grade_mixin.py:466
 msgid "Waiting for peer reviews"
 msgstr "Дождитесь проверки"
 
-#: openassessment/xblock/grade_mixin.py:491
+#: openassessment/xblock/grade_mixin.py:506
 msgid "Peer"
 msgstr "Взаимооценка"
 
@@ -2121,7 +2155,7 @@ msgid "Your peer assessment could not be submitted."
 msgstr "Не удалось отправить вашу оценку."
 
 #: openassessment/xblock/peer_assessment_mixin.py:119
-#: openassessment/xblock/student_training_mixin.py:218
+#: openassessment/xblock/student_training_mixin.py:213
 msgid "Could not update workflow status."
 msgstr "Не удалось обновить статус рабочего процесса."
 
@@ -2129,20 +2163,20 @@ msgstr "Не удалось обновить статус рабочего пр�
 msgid "Could not load peer assessment."
 msgstr "Не удалось загрузить взаимное оценивание."
 
-#: openassessment/xblock/peer_assessment_mixin.py:210
+#: openassessment/xblock/peer_assessment_mixin.py:211
 msgid "Submit your assessment and review another response"
 msgstr "Отправить оценку и проверить ещё один ответ"
 
-#: openassessment/xblock/peer_assessment_mixin.py:214
+#: openassessment/xblock/peer_assessment_mixin.py:215
 msgid "Submit your assessment and move to next step"
 msgstr "Отправить оценку и перейти к следующему шагу"
 
-#: openassessment/xblock/peer_assessment_mixin.py:218
+#: openassessment/xblock/peer_assessment_mixin.py:219
 #, python-brace-format
 msgid "Submit your assessment and move to response #{response_number}"
 msgstr "Отправить оценку и перейти к ответу № {response_number}"
 
-#: openassessment/xblock/resolve_dates.py:51
+#: openassessment/xblock/resolve_dates.py:50
 #, python-brace-format
 msgid ""
 "'{date}' is an invalid date format. Make sure the date is formatted as YYYY-"
@@ -2151,12 +2185,12 @@ msgstr ""
 "'{date}' имеет неверный формат. Убедитесь, что дата представлена в формате "
 "ГГГГ-ММ-ДДВЧЧ:ММ:СС."
 
-#: openassessment/xblock/resolve_dates.py:57
+#: openassessment/xblock/resolve_dates.py:56
 #, python-brace-format
 msgid "'{date}' must be a date string or datetime"
 msgstr "'{date}' должна быть строкой с датой или в формате  datetime"
 
-#: openassessment/xblock/resolve_dates.py:210
+#: openassessment/xblock/resolve_dates.py:209
 #, python-brace-format
 msgid ""
 "This step's start date '{start}' cannot be earlier than the previous step's "
@@ -2165,7 +2199,7 @@ msgstr ""
 "Дата запуска этого шага '{start}' не может предшествовать дате запуска "
 "предыдущего шага '{prev}'."
 
-#: openassessment/xblock/resolve_dates.py:218
+#: openassessment/xblock/resolve_dates.py:217
 #, python-brace-format
 msgid ""
 "This step's due date '{due}' cannot be later than the next step's due date "
@@ -2174,39 +2208,39 @@ msgstr ""
 "Срок сдачи этого шага '{due}' не может быть позже срока сдачи последующего "
 "шага '{prev}'."
 
-#: openassessment/xblock/resolve_dates.py:234
+#: openassessment/xblock/resolve_dates.py:233
 #, python-brace-format
 msgid "The start date '{start}' cannot be later than the due date '{due}'"
 msgstr "Дата запуска '{start}' не может быть позже срока сдачи  '{due}'"
 
-#: openassessment/xblock/self_assessment_mixin.py:136
+#: openassessment/xblock/self_assessment_mixin.py:135
 msgid "You must submit a response before you can perform a self-assessment."
 msgstr "Перед оцениванием своей работы вам необходимо отправить свой ответ."
 
-#: openassessment/xblock/self_assessment_mixin.py:158
-#: openassessment/xblock/self_assessment_mixin.py:165
+#: openassessment/xblock/self_assessment_mixin.py:157
+#: openassessment/xblock/self_assessment_mixin.py:164
 msgid "Your self assessment could not be submitted."
 msgstr "Не удалось отправить вашу оценку своей работы."
 
-#: openassessment/xblock/staff_area_mixin.py:43
+#: openassessment/xblock/staff_area_mixin.py:50
 msgid "You do not have permission to schedule training"
 msgstr "У вас недостаточно прав для запуска обучения автоматического оценщика"
 
-#: openassessment/xblock/staff_area_mixin.py:44
+#: openassessment/xblock/staff_area_mixin.py:51
 msgid "You do not have permission to reschedule tasks."
 msgstr "У вас недостаточно прав для перезапуска задач."
 
-#: openassessment/xblock/staff_area_mixin.py:71
+#: openassessment/xblock/staff_area_mixin.py:78
 msgid "You do not have permission to access the ORA staff area"
 msgstr ""
 "У вас недостаточно прав для доступа к информации по оцениванию открытых "
 "ответов для сотрудников"
 
-#: openassessment/xblock/staff_area_mixin.py:72
+#: openassessment/xblock/staff_area_mixin.py:79
 msgid "You do not have permission to access ORA learner information."
 msgstr "У вас недостаточно прав для доступа к информации о слушателях"
 
-#: openassessment/xblock/staff_area_mixin.py:73
+#: openassessment/xblock/staff_area_mixin.py:80
 msgid "You do not have permission to access ORA staff grading."
 msgstr "У вас нет доступа к оценке заданий командой курса."
 
@@ -2225,23 +2259,22 @@ msgid "Example Based Assessment is not configured for this location."
 msgstr ""
 
 #: openassessment/xblock/staff_area_mixin.py:244
-#: openassessment/xblock/staff_area_mixin.py:180
 msgid "Error getting learner information."
 msgstr "Ошибка получения информации о слушателе."
 
-#: openassessment/xblock/staff_area_mixin.py:217
+#: openassessment/xblock/staff_area_mixin.py:281
 msgid "Error loading the checked out learner response."
 msgstr "Ошибка загрузки проверенного ответа."
 
-#: openassessment/xblock/staff_area_mixin.py:219
+#: openassessment/xblock/staff_area_mixin.py:283
 msgid "No other learner responses are available for grading at this time."
 msgstr "Нет доступных для оценивания ответов."
 
-#: openassessment/xblock/staff_area_mixin.py:222
+#: openassessment/xblock/staff_area_mixin.py:286
 msgid "Error getting staff grade information."
 msgstr "Ошибка при получении информации об оценке команды курса."
 
-#: openassessment/xblock/staff_area_mixin.py:243
+#: openassessment/xblock/staff_area_mixin.py:307
 msgid "Error getting staff grade ungraded and checked out counts."
 msgstr "Ошибка получения списка заданий без оценки."
 
@@ -2255,12 +2288,11 @@ msgid "An error occurred while rescheduling tasks: {}"
 msgstr ""
 
 #: openassessment/xblock/staff_area_mixin.py:553
-#: openassessment/xblock/staff_area_mixin.py:440
 msgid "Please enter valid reason to remove the submission."
 msgstr ""
 "Пожалуйста, введите обоснованную причину удаления представленного задания."
 
-#: openassessment/xblock/staff_area_mixin.py:464
+#: openassessment/xblock/staff_area_mixin.py:577
 msgid ""
 "The learner submission has been removed from peer assessment. The learner "
 "receives a grade of zero unless you delete the learner's state for the "
@@ -2270,20 +2302,20 @@ msgstr ""
 "удалите статус выполненного слушателем задания, чтобы он смог отправить "
 "ответ заново, то слушатель получит нулевую оценку."
 
-#: openassessment/xblock/staff_assessment_mixin.py:39
+#: openassessment/xblock/staff_assessment_mixin.py:42
 msgid "The submission ID of the submission being assessed was not found."
 msgstr "Идентификатор проверяемого ответа не найден."
 
-#: openassessment/xblock/staff_assessment_mixin.py:65
-#: openassessment/xblock/staff_assessment_mixin.py:72
+#: openassessment/xblock/staff_assessment_mixin.py:68
+#: openassessment/xblock/staff_assessment_mixin.py:75
 msgid "Your staff assessment could not be submitted."
 msgstr "Не удалось отправить вашу оценку."
 
-#: openassessment/xblock/staff_assessment_mixin.py:124
+#: openassessment/xblock/staff_assessment_mixin.py:127
 msgid "Waiting for a Staff Grade"
 msgstr "Дождитесь проверки командой курса"
 
-#: openassessment/xblock/staff_assessment_mixin.py:125
+#: openassessment/xblock/staff_assessment_mixin.py:128
 msgid ""
 "Check back later to see if a course staff member has assessed your response. "
 "You will receive your grade after the assessment is complete."
@@ -2291,11 +2323,11 @@ msgstr ""
 "Зайдите позже для того, чтобы увидеть был ли проверен ваш ответ. Вы получите "
 "оценку после того, как ваша работа будет проверена."
 
-#: openassessment/xblock/staff_assessment_mixin.py:136
+#: openassessment/xblock/staff_assessment_mixin.py:139
 msgid "You Must Complete the Steps Above to View Your Grade"
 msgstr "Вы должны выполнить требуемые шаги для того, чтобы получить оценку"
 
-#: openassessment/xblock/staff_assessment_mixin.py:137
+#: openassessment/xblock/staff_assessment_mixin.py:140
 msgid ""
 "Although a course staff member has assessed your response, you will receive "
 "your grade only after you have completed all the required steps of this "
@@ -2304,29 +2336,30 @@ msgstr ""
 "Несмотря на то, что ваш ответ был проверен, вы получите оценку только после "
 "того, как выполните все шаги, требующиеся в этом задании."
 
-#: openassessment/xblock/student_training_mixin.py:175
+#: openassessment/xblock/student_training_mixin.py:170
 msgid "Missing options_selected key in request"
 msgstr "В запросе отсутствует ключ options_selected"
 
-#: openassessment/xblock/student_training_mixin.py:177
+#: openassessment/xblock/student_training_mixin.py:172
 msgid "options_selected must be a dictionary"
 msgstr "options_selected должен иметь форму словаря"
 
+#: openassessment/xblock/student_training_mixin.py:197
 #: openassessment/xblock/student_training_mixin.py:202
-#: openassessment/xblock/student_training_mixin.py:207
 msgid "Your scores could not be checked."
 msgstr "Не удалось проверить ваши оценки."
 
-#: openassessment/xblock/studio_mixin.py:179
-#: openassessment/xblock/studio_mixin.py:191
+#: openassessment/xblock/studio_mixin.py:183
+#: openassessment/xblock/studio_mixin.py:198
 msgid "Error updating XBlock configuration"
 msgstr "Ошибка при обновлении конфигурации XBlock"
 
-#: openassessment/xblock/studio_mixin.py:194
+#: openassessment/xblock/studio_mixin.py:201
 msgid "Error: both text and file upload responses can't be disabled"
-msgstr "Ошибка: нельзя одновременно отключить текстовый ответ и загрузку файлов."
+msgstr ""
+"Ошибка: нельзя одновременно отключить текстовый ответ и загрузку файлов."
 
-#: openassessment/xblock/studio_mixin.py:197
+#: openassessment/xblock/studio_mixin.py:204
 msgid ""
 "Error: in case if text response is disabled file upload response must be "
 "required"
@@ -2334,7 +2367,7 @@ msgstr ""
 "Ошибка: если отключён текстовый ответ, загрузка файлов должна быть "
 "обязательной."
 
-#: openassessment/xblock/studio_mixin.py:200
+#: openassessment/xblock/studio_mixin.py:207
 msgid ""
 "Error: in case if file upload response is disabled text response must be "
 "required"
@@ -2342,97 +2375,113 @@ msgstr ""
 "Ошибка: если загрузка файлов отключена, текстовый ответ должен быть "
 "обязательным."
 
-#: openassessment/xblock/studio_mixin.py:229
+#: openassessment/xblock/studio_mixin.py:230
 msgid ""
 "Validation error: There was an error in the XML definition of the examples "
 "provided by the user. Please correct the XML definition before saving."
 msgstr ""
 
-#: openassessment/xblock/studio_mixin.py:234
+#: openassessment/xblock/studio_mixin.py:235
 msgid ""
 "Validation error: No examples were provided for example based assessment."
 msgstr ""
 
-#: openassessment/xblock/studio_mixin.py:224
+#: openassessment/xblock/studio_mixin.py:252
 #, python-brace-format
 msgid "Validation error: {error}"
 msgstr "При проверке обнаружена ошибка: {error}"
 
-#: openassessment/xblock/studio_mixin.py:249
+#: openassessment/xblock/studio_mixin.py:278
 msgid "Successfully updated OpenAssessment XBlock"
 msgstr "XBlock для оценивания открытых ответов успешно обновлён"
 
-#: openassessment/xblock/submission_mixin.py:76
+#: openassessment/xblock/submission_mixin.py:78
 msgid "\"submission\" required to submit answer."
 msgstr "Для отправки ответа необходим параметр «submission»."
 
-#: openassessment/xblock/submission_mixin.py:97
+#: openassessment/xblock/submission_mixin.py:99
 msgid "To submit a response, view this component in Preview or Live mode."
 msgstr ""
 "Для отправки ответа используйте «Предварительный просмотр» или «Просмотр "
 "курса»"
 
-#: openassessment/xblock/submission_mixin.py:103
+#: openassessment/xblock/submission_mixin.py:105
 msgid "Multiple submissions are not allowed."
 msgstr "Многократная отправка не допускается."
 
-#: openassessment/xblock/submission_mixin.py:146
+#: openassessment/xblock/submission_mixin.py:148
 msgid "API returned unclassified exception."
 msgstr "API сообщил о неизвестном исключении."
 
-#: openassessment/xblock/submission_mixin.py:188
+#: openassessment/xblock/submission_mixin.py:190
 msgid "This response could not be saved."
 msgstr "Не удалось сохранить ответ."
 
-#: openassessment/xblock/submission_mixin.py:192
+#: openassessment/xblock/submission_mixin.py:194
 msgid "This response was not submitted."
 msgstr "Ответ не был отправлен на проверку."
 
-#: openassessment/xblock/submission_mixin.py:221
+#: openassessment/xblock/submission_mixin.py:223
 msgid "Files descriptions could not be saved."
 msgstr "Не удалось сохранить описания файлов."
 
-#: openassessment/xblock/submission_mixin.py:225
+#: openassessment/xblock/submission_mixin.py:227
 msgid "Files descriptions were not submitted."
 msgstr "Описания файлов не были отправлены."
 
-#: openassessment/xblock/submission_mixin.py:287
+#: openassessment/xblock/submission_mixin.py:289
 msgid "There was an error uploading your file."
 msgstr "Произошла ошибка при загрузке вашего файла."
 
-#: openassessment/xblock/submission_mixin.py:295
+#: openassessment/xblock/submission_mixin.py:297
 msgid "Content type must be GIF, PNG or JPG."
 msgstr "Тип файла должен быть GIF, PNG или JPG."
 
-#: openassessment/xblock/submission_mixin.py:298
+#: openassessment/xblock/submission_mixin.py:300
 msgid "Content type must be PDF, GIF, PNG or JPG."
 msgstr "Тип файла должен быть PDF, GIF, PNG или JPG."
 
-#: openassessment/xblock/submission_mixin.py:301
+#: openassessment/xblock/submission_mixin.py:303
 msgid "File type must be one of the following types: {}"
 msgstr "Файл должен быть одного из следующих типов: {}"
 
-#: openassessment/xblock/submission_mixin.py:305
+#: openassessment/xblock/submission_mixin.py:307
 msgid "File type is not allowed."
 msgstr "Недопустимый тип файла"
 
-#: openassessment/xblock/submission_mixin.py:312
+#: openassessment/xblock/submission_mixin.py:314
 msgid "Error retrieving upload URL."
 msgstr "Ошибка при получении URL загрузки."
 
-#: openassessment/xblock/submission_mixin.py:450
+#: openassessment/xblock/submission_mixin.py:456
 msgid "This response has been saved but not submitted."
 msgstr "Ответ сохранён, но ещё не отправлен на проверку."
 
-#: openassessment/xblock/submission_mixin.py:451
+#: openassessment/xblock/submission_mixin.py:457
 msgid "This response has not been saved."
 msgstr "Ответ ещё не сохранён."
 
-#: openassessment/xblock/validation.py:117
+#: openassessment/xblock/submission_mixin.py:491
+msgid "Can't remove attempt in studio preview."
+msgstr "Нельзя удалять данные в режиме превью в студии."
+
+#: openassessment/xblock/submission_mixin.py:497
+msgid "Invalid user."
+msgstr "Некорректный пользователь."
+
+#: openassessment/xblock/submission_mixin.py:509
+msgid "Module does not exist."
+msgstr "Выбранный блок не найден."
+
+#: openassessment/xblock/submission_mixin.py:512
+msgid "An error occurred while deleting the score."
+msgstr "Возникла ошибка в процессе удаления оценок."
+
+#: openassessment/xblock/validation.py:121
 msgid "This problem must include at least one assessment."
 msgstr "Это задание должно включать в себя хотя бы один способ оценивания."
 
-#: openassessment/xblock/validation.py:121
+#: openassessment/xblock/validation.py:125
 msgid "The assessment order you selected is invalid."
 msgstr "Выбранный порядок оценивания неверен."
 
@@ -2443,13 +2492,13 @@ msgstr ""
 "При взаимном оценивании число ответов, которые должен оценить каждый, должно "
 "быть положительным."
 
-#: openassessment/xblock/validation.py:134
+#: openassessment/xblock/validation.py:138
 msgid "In peer assessment, the \"Graded By\" value must be a positive integer."
 msgstr ""
 "При взаимном оценивании необходимое количество оценок ответа должно быть "
 "положительным."
 
-#: openassessment/xblock/validation.py:138
+#: openassessment/xblock/validation.py:142
 msgid ""
 "In peer assessment, the \"Must Grade\" value must be greater than or equal "
 "to the \"Graded By\" value."
@@ -2457,13 +2506,13 @@ msgstr ""
 "При взаимном оценивании число ответов, которые должен оценить каждый, должно "
 "быть не меньше необходимого количества оценок ответа."
 
-#: openassessment/xblock/validation.py:147
+#: openassessment/xblock/validation.py:151
 msgid "You must provide at least one example response for learner training."
 msgstr ""
 "Вам необходимо привести по крайней мере один пример ответа для обучения "
 "слушателей."
 
-#: openassessment/xblock/validation.py:150
+#: openassessment/xblock/validation.py:154
 msgid "Each example response for learner training must be unique."
 msgstr "Все примеры ответов для обучения слушателей должны различаться."
 
@@ -2478,28 +2527,28 @@ msgstr ""
 "Значение \"Обязательно\" должно быть положительным, если оценивание командой "
 "курса - это единственный шаг."
 
-#: openassessment/xblock/validation.py:161
+#: openassessment/xblock/validation.py:171
 msgid ""
 "The number of assessments cannot be changed after the problem has been "
 "released."
 msgstr "Набор типов оценивания нельзя изменить после выпуска задания."
 
-#: openassessment/xblock/validation.py:166
+#: openassessment/xblock/validation.py:176
 msgid ""
 "The assessment type cannot be changed after the problem has been released."
 msgstr "Тип оценивания нельзя изменить после выпуска задания."
 
-#: openassessment/xblock/validation.py:189
+#: openassessment/xblock/validation.py:200
 msgid "This rubric definition is not valid."
 msgstr "Критерии оценивания заданы неверно."
 
-#: openassessment/xblock/validation.py:195
+#: openassessment/xblock/validation.py:206
 #, python-brace-format
 msgid "Options in '{criterion}' have duplicate name(s): {duplicates}"
 msgstr ""
 "Повторяющиеся варианты ответов в критерии '{criterion}'(): {duplicates}"
 
-#: openassessment/xblock/validation.py:203
+#: openassessment/xblock/validation.py:214
 msgid "Criteria with no options must require written feedback."
 msgstr "В критериях без вариантов ответа должен требоваться отзыв."
 
@@ -2508,36 +2557,37 @@ msgid "Example-based assessments cannot have duplicate point values."
 msgstr ""
 
 #: openassessment/xblock/validation.py:232
-#: openassessment/xblock/validation.py:212
 msgid "Prompts cannot be created or deleted after a problem is released."
 msgstr "Подсказки не могут быть созданы или удалены после выпуска задания."
 
-#: openassessment/xblock/validation.py:216
+#: openassessment/xblock/validation.py:236
 msgid "The number of criteria cannot be changed after a problem is released."
 msgstr "Количество критериев нельзя будет изменить после выпуска задания."
 
-#: openassessment/xblock/validation.py:229
+#: openassessment/xblock/validation.py:249
 msgid "Criteria names cannot be changed after a problem is released"
 msgstr "Названия критериев нельзя будет изменить после выпуска задания."
 
-#: openassessment/xblock/validation.py:234
+#: openassessment/xblock/validation.py:254
 msgid "The number of options cannot be changed after a problem is released."
 msgstr ""
 "Количество вариантов ответа нельзя будет изменить после выпуска задания."
 
-#: openassessment/xblock/validation.py:239
+#: openassessment/xblock/validation.py:259
 msgid "Point values cannot be changed after a problem is released."
 msgstr "Количество баллов нельзя будет изменить после выпуска задания."
 
 #: openassessment/xblock/validation.py:310
 #, fuzzy
-msgid "Learner training must have at least one training example."
+msgid ""
+"Learner training and example-based assessments must have at least one "
+"training example."
 msgstr "Для обучения слушателей требуется хотя бы один пример."
 
-#: openassessment/xblock/validation.py:352
+#: openassessment/xblock/validation.py:373
 msgid "Leaderboard number is invalid."
 msgstr "Количество лучших ответов задано неверно."
 
-#: openassessment/xblock/validation.py:375
+#: openassessment/xblock/validation.py:396
 msgid "The submission format is invalid."
 msgstr "Неправильный формат ответа."

@@ -6,6 +6,14 @@
         %>
         <td class="string-cell renderable <%- s.class %>">
             <div class="ora-summary-title"><%- s.title %></div>
+        </td>
+        <% } %>
+    </tr>
+    <tr>
+        <% for (var i = 0; i < oraSummary.length; i++) {
+            var s = oraSummary[i];
+        %>
+        <td class="string-cell renderable <%- s.class %>">
             <div class="ora-summary-value" title="<%- s.value %>"><%- s.value %></div>
         </td>
         <% } %>
