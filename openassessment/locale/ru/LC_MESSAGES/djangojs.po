@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: edx-platform\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-18 07:29-0500\n"
+"POT-Creation-Date: 2019-01-31 08:17-0500\n"
 "PO-Revision-Date: 2017-09-23 19:57+0000\n"
 "Last-Translator: Liubov Fomicheva <liubov.nelapa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/open-edx/edx-platform/"
@@ -96,38 +96,38 @@ msgstr "Не удалось перезапустить одну или неск�
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:1
 #: openassessment/xblock/static/js/openassessment-studio.min.js:1
-#: openassessment/xblock/static/js/src/oa_server.js:484
+#: openassessment/xblock/static/js/src/oa_server.js:485
 msgid "This problem could not be saved."
 msgstr "Не удалось сохранить задание."
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:1
 #: openassessment/xblock/static/js/openassessment-studio.min.js:1
-#: openassessment/xblock/static/js/src/oa_server.js:506
+#: openassessment/xblock/static/js/src/oa_server.js:507
 msgid "The server could not be contacted."
 msgstr "Не удалось установить соединение с сервером."
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:1
 #: openassessment/xblock/static/js/openassessment-studio.min.js:1
-#: openassessment/xblock/static/js/src/oa_server.js:533
+#: openassessment/xblock/static/js/src/oa_server.js:534
 msgid "Could not retrieve upload url."
 msgstr "Не удалось получить url для загрузки."
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:1
 #: openassessment/xblock/static/js/openassessment-studio.min.js:1
-#: openassessment/xblock/static/js/src/oa_server.js:553
-#: openassessment/xblock/static/js/src/oa_server.js:573
+#: openassessment/xblock/static/js/src/oa_server.js:554
+#: openassessment/xblock/static/js/src/oa_server.js:574
 msgid "Server error."
 msgstr "Ошибка сервера."
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:1
 #: openassessment/xblock/static/js/openassessment-studio.min.js:1
-#: openassessment/xblock/static/js/src/oa_server.js:594
+#: openassessment/xblock/static/js/src/oa_server.js:595
 msgid "Could not retrieve download url."
 msgstr "Не удалось получить url для скачивания."
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:1
 #: openassessment/xblock/static/js/openassessment-studio.min.js:1
-#: openassessment/xblock/static/js/src/oa_server.js:620
+#: openassessment/xblock/static/js/src/oa_server.js:621
 msgid "The submission could not be removed from the grading pool."
 msgstr "Не удалось удалить ответ из хранилища."
 
@@ -283,13 +283,22 @@ msgid "Do you want to upload your file before submitting?"
 msgstr "Вы хотите загрузить файл до отправки ответа?"
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:2
+#: openassessment/xblock/static/js/src/lms/oa_response.js:471
+msgid "You haven't uploaded any file. Are you sure you want to proceed?"
+msgstr "Вы не загрузили файл с ответом. Уверены, что хотите продолжить?"
+
+#: openassessment/xblock/static/js/openassessment-lms.min.js:2
 #: openassessment/xblock/static/js/src/lms/oa_response.js:541
+#, fuzzy
+#| msgid ""
+#| "You're about to submit your response for this assignment. After you "
+#| "submit this response, you can't change it or submit a new response."
 msgid ""
 "You're about to submit your response for this assignment. After you submit "
-"this response, you can't change it or submit a new response."
+"this response, you can't change it."
 msgstr ""
 "Вы собираетесь отправить свой ответ на оценивание. После отправки ответа Вы "
-"не сможете изменить его или отправить новый ответ."
+"не сможете изменить его."
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:2
 #: openassessment/xblock/static/js/src/lms/oa_response.js:583
@@ -362,6 +371,36 @@ msgstr ""
 #: openassessment/xblock/static/js/src/lms/oa_training.js:116
 msgid "Feedback available for selection."
 msgstr "Выбор вариантов обратной связи."
+
+#: openassessment/xblock/static/js/openassessment-studio.min.js:1
+#: openassessment/xblock/static/js/src/studio/oa_edit.js:396
+msgid "Paragraph"
+msgstr ""
+
+#: openassessment/xblock/static/js/openassessment-studio.min.js:1
+#: openassessment/xblock/static/js/src/studio/oa_edit.js:397
+msgid "Preformatted"
+msgstr ""
+
+#: openassessment/xblock/static/js/openassessment-studio.min.js:1
+#: openassessment/xblock/static/js/src/studio/oa_edit.js:398
+msgid "Heading 3"
+msgstr ""
+
+#: openassessment/xblock/static/js/openassessment-studio.min.js:1
+#: openassessment/xblock/static/js/src/studio/oa_edit.js:399
+msgid "Heading 4"
+msgstr ""
+
+#: openassessment/xblock/static/js/openassessment-studio.min.js:1
+#: openassessment/xblock/static/js/src/studio/oa_edit.js:400
+msgid "Heading 5"
+msgstr ""
+
+#: openassessment/xblock/static/js/openassessment-studio.min.js:1
+#: openassessment/xblock/static/js/src/studio/oa_edit.js:401
+msgid "Heading 6"
+msgstr ""
 
 #: openassessment/xblock/static/js/openassessment-studio.min.js:1
 #: openassessment/xblock/static/js/src/studio/oa_container_item.js:39
@@ -468,7 +507,3 @@ msgstr "Необходимо заполнить список типов файл
 #: openassessment/xblock/static/js/src/studio/oa_edit_settings.js:76
 msgid "The following file types are not allowed: "
 msgstr "Следующие типы файлов недопустимы:"
-
-#: openassessment/xblock/static/js/src/lms/oa_response.js:471
-msgid "You haven't uploaded any file. Are you sure you want to proceed?"
-msgstr "Вы не загрузили файл с ответом. Уверены, что хотите продолжить?"
