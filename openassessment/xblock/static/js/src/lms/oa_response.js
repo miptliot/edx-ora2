@@ -538,7 +538,7 @@ OpenAssessment.ResponseView.prototype = {
      **/
     confirmSubmission: function() {
         // Keep this on one big line to avoid gettext bug: http://stackoverflow.com/a/24579117
-        var msg = gettext("You're about to submit your response for this assignment. After you submit this response, you can't change it or submit a new response.");  // jscs:ignore maximumLineLength
+        var msg = gettext("You're about to submit your response for this assignment. After you submit this response, you can't change it.");  // jscs:ignore maximumLineLength
         // TODO -- UI for confirmation dialog instead of JS confirm
         return $.Deferred(function(defer) {
             if (confirm(msg)) { defer.resolve(); }
