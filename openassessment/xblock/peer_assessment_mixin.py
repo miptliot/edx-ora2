@@ -347,6 +347,8 @@ class PeerAssessmentMixin(object):
             target_submission_uuid (str): submission which scorer would like to grade
         Returns: None
         """
+        from openassessment.assessment.api import peer as peer_api
+
         if not continue_grading:
             return
         if not target_submission_uuid:
