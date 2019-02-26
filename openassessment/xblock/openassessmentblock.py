@@ -13,6 +13,7 @@ from webob import Response
 from xblock.core import XBlock
 from xblock.fields import Boolean, Integer, List, Scope, String
 from xblock.fragment import Fragment
+from xblock.exceptions import NoSuchServiceError
 
 from django.conf import settings
 from django.template.loader import get_template
@@ -853,6 +854,16 @@ class OpenAssessmentBlock(MessageMixin,
         template = get_template('openassessmentblock/oa_error.html')
         return Response(template.render(context), content_type='application/html', charset='UTF-8')
 
+    def _prepare_date(self, date):
+        if date and self.service_declaration("usage_info"):
+            try:
+                usage_info_service = self.xmodule_runtime.service(self, "usage_info")
+                if usage_info_service:
+                    return usage_info_service.course_shift_date(parse_date_value(date, self._))
+            except NoSuchServiceError:
+                pass
+        return date
+
     def is_closed(self, step=None, course_staff=None):
         """
         Checks if the question is closed.
@@ -893,15 +904,16 @@ class OpenAssessmentBlock(MessageMixin,
             datetime.datetime(2015, 3, 27, 22, 7, 38, 788861)
 
         """
-        submission_range = (self.submission_start, self.submission_due)
+        submission_range = (self._prepare_date(self.submission_start), self._prepare_date(self.submission_due))
         assessment_ranges = [
-            (asmnt.get('start'), asmnt.get('due'))
+            (self._prepare_date(asmnt.get('start')), self._prepare_date(asmnt.get('due')))
             for asmnt in self.valid_assessments
         ]
 
         # Resolve unspecified dates and date strings to datetimes
         start, due, date_ranges = resolve_dates(
-            self.start, self.due, [submission_range] + assessment_ranges, self._
+            self._prepare_date(self.start), self._prepare_date(self.due),
+            [submission_range] + assessment_ranges, self._
         )
 
         open_range = (start, due)
