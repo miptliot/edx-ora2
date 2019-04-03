@@ -1,3 +1,4 @@
+import os
 from django.conf import settings
 import django.core.cache
 from django.core.urlresolvers import reverse_lazy
@@ -5,6 +6,11 @@ from django.utils.encoding import smart_text
 
 from .. import exceptions
 from .base import BaseBackend
+
+try:
+    from urllib import urlencode
+except ImportError:
+    from urllib.parse import urlencode
 
 
 class Backend(BaseBackend):
@@ -33,22 +39,27 @@ class Backend(BaseBackend):
         }
     """
 
-    def get_upload_url(self, key, content_type):
+    def get_upload_url(self, key, content_type, filename=None):
         make_upload_url_available(self._get_key_name(key), self.UPLOAD_URL_TIMEOUT)
-        return self._get_url(key)
+        return self._get_url(key, filename)
 
     def get_download_url(self, key):
-        make_download_url_available(self._get_key_name(key), self.DOWNLOAD_URL_TIMEOUT)
+        from openassessment.fileupload.views_filesystem import get_file_path
+        key_name = self._get_key_name(key)
+        file_path = get_file_path(key_name)
+        if not os.path.exists(file_path):
+            raise exceptions.FileUploadInternalError("File doesn't exists")
+        make_download_url_available(key_name, self.DOWNLOAD_URL_TIMEOUT)
         return self._get_url(key)
 
     def remove_file(self, key):
         from openassessment.fileupload.views_filesystem import safe_remove, get_file_path
         return safe_remove(get_file_path(self._get_key_name(key)))
 
-    def _get_url(self, key):
+    def _get_url(self, key, filename=None):
         key_name = self._get_key_name(key)
         url = reverse_lazy("openassessment-filesystem-storage", kwargs={'key': key_name})
-        return url
+        return url + (('?' + urlencode({'filename': filename.encode('utf-8')})) if filename else '')
 
 
 def get_cache():

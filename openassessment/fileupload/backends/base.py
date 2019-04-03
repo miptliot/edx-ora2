@@ -47,7 +47,7 @@ class BaseBackend(object):
     DOWNLOAD_URL_TIMEOUT = 1000
 
     @abc.abstractmethod
-    def get_upload_url(self, key, content_type):
+    def get_upload_url(self, key, content_type, filename=None):
         """Request a one-time upload URL to upload files.
 
         Requests a URL for a one-time file upload.

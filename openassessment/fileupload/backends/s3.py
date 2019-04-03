@@ -12,7 +12,7 @@ logger = logging.getLogger("openassessment.fileupload.api")
 
 class Backend(BaseBackend):
 
-    def get_upload_url(self, key, content_type):
+    def get_upload_url(self, key, content_type, filename=None):
         bucket_name, key_name = self._retrieve_parameters(key)
         try:
             conn = _connect_to_s3()

@@ -309,8 +309,8 @@ class SubmissionMixin(object):
             return {'success': False, 'msg': self._(u"File type is not allowed.")}
         try:
             key = self._get_student_item_key(file_num)
-            url = file_upload_api.get_upload_url(key, content_type)
-            return {'success': True, 'url': url}
+            url = file_upload_api.get_upload_url(key, content_type, file_name)
+            return {'success': True, 'url': str(url)}
         except FileUploadError:
             logger.exception("Error retrieving upload URL.")
             return {'success': False, 'msg': self._(u"Error retrieving upload URL.")}
@@ -325,7 +325,7 @@ class SubmissionMixin(object):
 
         """
         file_num = int(data.get('filenum', 0))
-        return {'success': True, 'url': self._get_download_url(file_num)}
+        return {'success': True, 'url': str(self._get_download_url(file_num))}
 
     @XBlock.json_handler
     def remove_all_uploaded_files(self, data, suffix=''):  # pylint: disable=unused-argument

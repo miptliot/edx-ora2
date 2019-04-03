@@ -33,7 +33,7 @@ class Backend(BaseBackend):
     Upload openassessment student files to swift
     """
 
-    def get_upload_url(self, key, content_type):
+    def get_upload_url(self, key, content_type, filename=None):
         bucket_name, key_name = self._retrieve_parameters(key)
         key, url = get_settings()
         try:

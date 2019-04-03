@@ -11,7 +11,7 @@ class Backend(BaseBackend):
     """
     Manage openassessment student files uploaded using the default django storage settings.
     """
-    def get_upload_url(self, key, content_type):
+    def get_upload_url(self, key, content_type, filename=None):
         """
         Return the URL pointing to the ORA2 django storage upload endpoint.
         """

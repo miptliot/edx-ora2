@@ -5,11 +5,17 @@ import os
 from django.conf import settings
 from django.shortcuts import Http404, HttpResponse
 from django.utils import timezone
+from django.utils.encoding import escape_uri_path
 from django.views.decorators.http import require_http_methods
 
 from . import exceptions
 from .backends.base import Settings
 from .backends.filesystem import is_download_url_available, is_upload_url_available
+
+try:
+    from urllib import unquote
+except ImportError:
+    from urllib.parse import unquote
 
 
 @require_http_methods(["PUT", "GET"])
@@ -36,15 +42,18 @@ def download_file(key):
 
     file_path = get_file_path(key)
     metadata_path = get_metadata_path(key)
+    file_name = None
     if not os.path.exists(file_path):
         raise Http404()
     with open(metadata_path) as f:
         metadata = json.load(f)
         content_type = metadata.get("Content-Type", 'application/octet-stream')
+        file_name = metadata.get('Filename', '')
     with open(file_path, 'r') as f:
         response = HttpResponse(f.read(), content_type=content_type)
-        file_name = os.path.basename(os.path.dirname(file_path))
-        response['Content-Disposition'] = 'attachment; filename=' + file_name
+        if not file_name:
+            file_name = os.path.basename(os.path.dirname(file_path))
+        response['Content-Disposition'] = "attachment; filename=" + escape_uri_path(file_name)
     return response
 
 
@@ -56,8 +65,12 @@ def get_content_metadata(request):
         request body (str)
         request metadata (dict)
     """
+    filename = request.GET.get('filename', '')
+    if filename:
+        filename = unquote(filename)
 
     metadata = {
+        "Filename": filename,
         "Content-Type": request.META["CONTENT_TYPE"],
         "Date": str(timezone.now()),
         "Content-MD5": hashlib.md5(request.body).hexdigest(),
