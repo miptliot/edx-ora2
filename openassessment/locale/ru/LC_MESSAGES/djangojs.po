@@ -302,8 +302,8 @@ msgstr ""
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:2
 #: openassessment/xblock/static/js/src/lms/oa_response.js:583
-msgid "File size must be 10MB or less."
-msgstr "Размер файла не должен превышать 10 Мб."
+msgid "File size must be 100MB or less."
+msgstr "Размер файла не должен превышать 100 Мб."
 
 #: openassessment/xblock/static/js/openassessment-lms.min.js:2
 #: openassessment/xblock/static/js/src/lms/oa_response.js:590
