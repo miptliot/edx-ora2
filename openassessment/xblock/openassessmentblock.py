@@ -37,6 +37,10 @@ from openassessment.xblock.submission_mixin import SubmissionMixin
 from openassessment.xblock.validation import validator
 from openassessment.xblock.workflow_mixin import WorkflowMixin
 from openassessment.xblock.xml import parse_from_xml, serialize_content_to_xml
+try:
+    from courseware.student_field_overrides import get_override_for_user
+except ImportError:
+    get_override_for_user = None
 
 logger = logging.getLogger(__name__)
 
@@ -854,6 +858,16 @@ class OpenAssessmentBlock(MessageMixin,
         template = get_template('openassessmentblock/oa_error.html')
         return Response(template.render(context), content_type='application/html', charset='UTF-8')
 
+    def get_current_user(self):
+        if self.service_declaration("usage_info"):
+            try:
+                usage_info_service = self.xmodule_runtime.service(self, "usage_info")
+                if usage_info_service:
+                    return usage_info_service.user
+            except NoSuchServiceError:
+                pass
+        return None
+
     def _prepare_date(self, date):
         if date and self.service_declaration("usage_info"):
             try:
@@ -904,15 +918,35 @@ class OpenAssessmentBlock(MessageMixin,
             datetime.datetime(2015, 3, 27, 22, 7, 38, 788861)
 
         """
-        submission_range = (self._prepare_date(self.submission_start), self._prepare_date(self.submission_due))
-        assessment_ranges = [
-            (self._prepare_date(asmnt.get('start')), self._prepare_date(asmnt.get('due')))
-            for asmnt in self.valid_assessments
-        ]
+        date_diff = None
+        due_is_overridden = False
+        if not self.in_studio_preview and settings.FEATURES.get('INDIVIDUAL_DUE_DATES')\
+                and get_override_for_user is not None:
+            seq_parent = self.get_parent()
+            while seq_parent and seq_parent.category != 'sequential':
+                seq_parent = seq_parent.get_parent()
+            user = self.get_current_user()
+            if seq_parent and user:
+                due_overridden = get_override_for_user(user, seq_parent, 'due')
+                if due_overridden and due_overridden == self.due:
+                    due_is_overridden = True
+                    date_diff = self.due - self._prepare_date(self.submission_due)
+
+        submission_range = (self._prepare_date(self.submission_start),
+                            self.due if due_is_overridden else self._prepare_date(self.submission_due))
+
+        assessment_ranges = []
+        for asmnt in self.valid_assessments:
+            range_start = self._prepare_date(asmnt.get('start'))
+            if due_is_overridden:
+                range_end = self._prepare_date(asmnt.get('due')) + date_diff
+            else:
+                range_end = self._prepare_date(asmnt.get('due'))
+            assessment_ranges.append((range_start, range_end))
 
         # Resolve unspecified dates and date strings to datetimes
         start, due, date_ranges = resolve_dates(
-            self._prepare_date(self.start), self._prepare_date(self.due),
+            self._prepare_date(self.start), self.due if due_is_overridden else self._prepare_date(self.due),
             [submission_range] + assessment_ranges, self._
         )
 
