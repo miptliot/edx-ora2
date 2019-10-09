@@ -597,6 +597,7 @@ OpenAssessment.ResponseView.prototype = {
         var fileType = null;
         var fileName = '';
         var errorCheckerTriggered = false;
+        var filesDescriptions = [];
 
         for (var i = 0; i < files.length; i++) {
             totalSize += files[i].size;
@@ -641,6 +642,8 @@ OpenAssessment.ResponseView.prototype = {
                 errorCheckerTriggered = true;
                 break;
             }
+
+            filesDescriptions.push(files[i].name);
         }
 
         if (!errorCheckerTriggered) {
@@ -648,11 +651,13 @@ OpenAssessment.ResponseView.prototype = {
             if (files.length > 0) {
                 this.files = files;
             }
-            this.updateFilesDescriptionsFields(files, descriptions, uploadType);
+            this.updateFilesDescriptionsFields(files, descriptions ? descriptions : filesDescriptions, uploadType);
         }
 
         if (this.files === null) {
             $(this.element).find('.file__upload').prop('disabled', true);
+        } else {
+            $(this.element).find('.file__upload').prop('disabled', false);
         }
     },
 
@@ -680,7 +685,7 @@ OpenAssessment.ResponseView.prototype = {
 
             divLabel = $('<div/>');
             divLabel.addClass('submission__file__description__label');
-            divLabel.text(gettext("Describe ") + files[i].name + ' ' + gettext("(required):"));
+            divLabel.text(gettext("Describe ") + files[i].name + ' ' + gettext("(optional):"));
             divLabel.appendTo(mainDiv);
 
             divTextarea = $('<div/>');
@@ -729,20 +734,25 @@ OpenAssessment.ResponseView.prototype = {
     checkFilesDescriptions: function() {
         var isError = false;
         var filesDescriptions = [];
+        var i = 0;
+        var view = this;
 
         $(this.element).find('.file__description').each(function() {
             var filesDescriptionVal = $.trim($(this).val());
             if (filesDescriptionVal) {
                 filesDescriptions.push(filesDescriptionVal);
             } else {
+                filesDescriptions.push(view.files[i].name);
                 isError = true;
             }
+            i = i + 1;
         });
 
-        $(this.element).find('.file__upload').prop('disabled', isError);
-        if (!isError) {
-            this.filesDescriptions = filesDescriptions;
-        }
+        //$(this.element).find('.file__upload').prop('disabled', isError);
+        //if (!isError) {
+        //    this.filesDescriptions = filesDescriptions;
+        //}
+        this.filesDescriptions = filesDescriptions;
     },
 
     /**
