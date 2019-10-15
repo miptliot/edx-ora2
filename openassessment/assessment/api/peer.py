@@ -608,7 +608,7 @@ def get_submitted_assessments(submission_uuid, limit=None):
         raise PeerAssessmentInternalError(error_message)
 
 
-def get_submission_to_assess(submission_uuid, graded_by):
+def get_submission_to_assess(submission_uuid, graded_by, users_to_search=None, ignore_search=False):
     """Get a submission to peer evaluate.
 
     Retrieves a submission for assessment for the given student. This will
@@ -668,10 +668,11 @@ def get_submission_to_assess(submission_uuid, graded_by):
     # If there is an active assessment for this user, get that submission,
     # otherwise, get the first assessment for review, otherwise,
     # get the first submission available for over grading ("over-grading").
-    if peer_submission_uuid is None:
-        peer_submission_uuid = workflow.get_submission_for_review(graded_by)
-    if peer_submission_uuid is None:
-        peer_submission_uuid = workflow.get_submission_for_over_grading()
+    if not ignore_search:
+        if peer_submission_uuid is None:
+            peer_submission_uuid = workflow.get_submission_for_review(graded_by, users_to_search)
+        if peer_submission_uuid is None:
+            peer_submission_uuid = workflow.get_submission_for_over_grading(users_to_search)
     if peer_submission_uuid:
         try:
             submission_data = sub_api.get_submission(peer_submission_uuid)

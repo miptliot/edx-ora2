@@ -130,7 +130,8 @@ DEFAULT_PEER_ASSESSMENT = {
     "due": DEFAULT_DUE,
     "must_grade": 5,
     "must_be_graded_by": 3,
-    "display_peer_assessments": False
+    "display_peer_assessments": False,
+    "responses_only_from_same_course_shift": False
 }
 
 DEFAULT_SELF_ASSESSMENT = {

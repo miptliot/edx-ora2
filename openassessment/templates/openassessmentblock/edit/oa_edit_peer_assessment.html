@@ -76,9 +76,18 @@
                 <li class="field comp-setting-entry">
                     <div class="wrapper-comp-setting">
                         <label for="peer_assessment_display_peer_assessments" class="setting-label">{% trans "Allow students to see peer assessments results"%}</label>
-                            <select id="peer_assessment_display_peer_assessments" class="input setting-input" name="upload submission">
+                            <select id="peer_assessment_display_peer_assessments" class="input setting-input" name="display_peer_assessments">
                                 <option value="0">{% trans "False"%}</option>
                                 <option value="1" {% if assessments.peer_assessment.display_peer_assessments %}selected="true"{% endif %}>{% trans "True"%}</option>
+                            </select>
+                    </div>
+                </li>
+                <li class="field comp-setting-entry">
+                    <div class="wrapper-comp-setting">
+                        <label for="peer_assessment_responses_only_from_same_course_shift" class="setting-label">{% trans "Display student responses only from the same course shift (if course shifts enabled)"%}</label>
+                            <select id="peer_assessment_responses_only_from_same_course_shift" class="input setting-input" name="responses_only_from_same_course_shift">
+                                <option value="0">{% trans "False"%}</option>
+                                <option value="1" {% if assessments.peer_assessment.responses_only_from_same_course_shift %}selected="true"{% endif %}>{% trans "True"%}</option>
                             </select>
                     </div>
                 </li>

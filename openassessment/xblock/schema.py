@@ -111,6 +111,7 @@ EDITOR_UPDATE_SCHEMA = Schema({
             'required': bool,
             'must_grade': All(int, Range(min=0)),
             'display_peer_assessments': bool,
+            'responses_only_from_same_course_shift': bool,
             'must_be_graded_by': All(int, Range(min=0)),
             'examples': [
                 Schema({

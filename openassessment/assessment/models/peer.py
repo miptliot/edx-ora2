@@ -251,7 +251,7 @@ class PeerWorkflow(models.Model):
 
         return valid_open_items[0] if valid_open_items else None
 
-    def get_submission_for_review(self, graded_by):
+    def get_submission_for_review(self, graded_by, users_to_search=None):
         """
         Find a submission for peer assessment. This function will find the next
         submission that requires assessment, excluding any submission that has been
@@ -283,8 +283,8 @@ class PeerWorkflow(models.Model):
                 "select pw.id, pw.submission_uuid "
                 "from assessment_peerworkflow pw "
                 "where pw.item_id=%s "
-                "and pw.course_id=%s "
-                "and pw.student_id<>%s "
+                "and pw.course_id=%s " +
+                ("and pw.student_id in %s " if users_to_search else "and pw.student_id<>%s ") +
                 "and pw.grading_completed_at is NULL "
                 "and pw.cancelled_at is NULL "
                 "and pw.id not in ("
@@ -304,7 +304,7 @@ class PeerWorkflow(models.Model):
                 [
                     self.item_id,
                     self.course_id,
-                    self.student_id,
+                    users_to_search if users_to_search else self.student_id,
                     self.id,
                     timeout,
                     graded_by
@@ -384,7 +384,7 @@ class PeerWorkflow(models.Model):
             logger.exception(error_message)
             raise PeerAssessmentInternalError(error_message)
 
-    def get_submission_for_over_grading(self):
+    def get_submission_for_over_grading(self, users_to_search=None):
         """
         Retrieve the next submission uuid for over grading in peer assessment.
         """
@@ -399,15 +399,20 @@ class PeerWorkflow(models.Model):
                 "select pw.id, pw.submission_uuid "
                 "from assessment_peerworkflow pw "
                 "where course_id=%s "
-                "and item_id=%s "
-                "and student_id<>%s "
+                "and item_id=%s " +
+                ("and student_id in %s " if users_to_search else "and student_id<>%s ") +
                 "and pw.cancelled_at is NULL "
                 "and pw.id not in ( "
                 "select pwi.author_id "
                 "from assessment_peerworkflowitem pwi "
                 "where pwi.scorer_id=%s"
                 "); ",
-                [self.course_id, self.item_id, self.student_id, self.id]
+                [
+                    self.course_id,
+                    self.item_id,
+                    users_to_search if users_to_search else self.student_id,
+                    self.id
+                ]
             ))
             workflow_count = len(query)
             if workflow_count < 1:

@@ -7,6 +7,7 @@ import logging
 
 from webob import Response
 from xblock.core import XBlock
+from xblock.exceptions import NoSuchServiceError
 
 from openassessment.assessment.errors import (PeerAssessmentInternalError, PeerAssessmentRequestError,
                                               PeerAssessmentWorkflowError)
@@ -294,10 +295,27 @@ class PeerAssessmentMixin(object):
         # Import is placed here to avoid model import at project startup.
         from openassessment.assessment.api import peer as peer_api
         peer_submission = False
+        course_shifts_enabled = False
+        try:
+            usage_info_service = self.xmodule_runtime.service(self, "usage_info")
+            if usage_info_service:
+                course_shifts_enabled = usage_info_service.course_shifts_enabled()
+        except NoSuchServiceError:
+            pass
+
+        ignore_search = False
+        users_to_search = None
+        if assessment.get('responses_only_from_same_course_shift', False) and course_shifts_enabled:
+            users_to_search = usage_info_service.get_anonymous_users_from_same_course_shift()
+            if not users_to_search:
+                ignore_search = True
+
         try:
             peer_submission = peer_api.get_submission_to_assess(
                 self.submission_uuid,
-                assessment["must_be_graded_by"]
+                assessment["must_be_graded_by"],
+                users_to_search,
+                ignore_search
             )
             self.runtime.publish(
                 self,

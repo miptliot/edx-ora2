@@ -574,6 +574,10 @@ def parse_assessments_xml(assessments_root):
             assessment_dict['display_peer_assessments'] = _parse_boolean(
                 unicode(assessment.get('display_peer_assessments')))
 
+        if 'responses_only_from_same_course_shift' in assessment.attrib:
+            assessment_dict['responses_only_from_same_course_shift'] = _parse_boolean(
+                unicode(assessment.get('responses_only_from_same_course_shift')))
+
         # Assessment required
         if 'required' in assessment.attrib:
 
@@ -676,6 +680,9 @@ def serialize_assessments(assessments_root, oa_block):
 
         if assessment_dict.get('display_peer_assessments') is not None:
             assessment.set('display_peer_assessments', unicode(assessment_dict['display_peer_assessments']))
+
+        if assessment_dict.get('responses_only_from_same_course_shift') is not None:
+            assessment.set('responses_only_from_same_course_shift', unicode(assessment_dict['responses_only_from_same_course_shift']))
 
         # Training examples
         examples = assessment_dict.get('examples', [])

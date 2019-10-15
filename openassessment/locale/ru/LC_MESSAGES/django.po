@@ -480,6 +480,11 @@ msgid "Allow students to see peer assessments results"
 msgstr ""
 "Разрешить студенам видеть оценки, которые им поставили другие слушатели"
 
+#: openassessment/templates/openassessmentblock/edit/oa_edit_peer_assessment.html:87
+msgid "Display student responses only from the same course shift (if course shifts enabled)"
+msgstr ""
+"Отображать пользователю ответы на оценивание из той же когорты, в которой он находится (работает только, если когорты включены)"
+
 #: openassessment/templates/openassessmentblock/edit/oa_edit_prompt.html:8
 msgid "You cannot delete a prompt after the assignment has been released."
 msgstr "Вы не можете удалить подсказку после того как задание опубликовано."
